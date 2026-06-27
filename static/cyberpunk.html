@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyberpunk RED — DataTerm</title>
+  <link rel="stylesheet" href="/css/cyberpunk.css" />
+</head>
+<body class="theme-cyberpunk">
+  <!-- ===== Экран входа в кампанию ===== -->
+  <section id="screen-campaign" class="screen">
+    <div class="join-card">
+      <div class="dt-bar dt-bar-top">
+        <span class="dt-nc">NC</span>
+        <span class="dt-title">NIGHT CITY GOVERNMENT</span>
+        <span class="dt-right">DataTerm Inc.&nbsp;&#9658;&nbsp;PUBLIC RECORD ACCESS</span>
+      </div>
+      <h1 class="title">CYBERPUNK&nbsp;RED</h1>
+      <p class="subtitle">Topic: CITIZEN&nbsp;DATA&nbsp;—&nbsp;CHARACTER&nbsp;RECORDS</p>
+
+      <label class="field">
+        <span>ID кампании</span>
+        <input id="campaign-input" type="text" placeholder="night-city"
+               autocomplete="off" spellcheck="false" maxlength="128" />
+      </label>
+      <p class="hint">Буквы, цифры, <code>-</code> и <code>_</code>. Поделись этим ID с пати.</p>
+
+      <div class="row gap">
+        <button id="btn-open" class="btn primary">ОТКРЫТЬ</button>
+        <button id="btn-create" class="btn">СОЗДАТЬ</button>
+      </div>
+      <p id="campaign-error" class="error" hidden></p>
+
+      <div class="dt-bar dt-bar-bottom">
+        <span class="barcode" aria-hidden="true"></span>
+        <span class="dt-rec">NCPD:DATATERM-PUBLIC-RECORD</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Доска кампании ===== -->
+  <section id="screen-board" class="screen" hidden data-view="list">
+    <header class="board-header">
+      <div class="dt-bar dt-bar-top">
+        <span class="dt-nc">NC</span>
+        <span class="dt-title">NIGHT CITY GOVERNMENT</span>
+        <span class="dt-right">DataTerm Inc.&nbsp;&#9658;&nbsp;PUBLIC RECORD ACCESS</span>
+      </div>
+      <div class="board-subbar">
+        <div class="row gap center">
+          <button id="btn-leave" class="btn ghost" title="Выйти к выбору кампании">&larr;</button>
+          <div>
+            <div class="muted small">Topic: CAMPAIGN</div>
+            <div id="board-campaign-id" class="campaign-id"></div>
+          </div>
+        </div>
+        <div class="row gap center">
+          <span id="conn-status" class="conn" title="Состояние синхронизации">
+            <span class="dot"></span><span class="conn-label">офлайн</span>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <h2>ROSTER</h2>
+          <button id="btn-new-char" class="btn primary">+ ЗАПИСЬ</button>
+        </div>
+        <ul id="char-list" class="char-list"></ul>
+        <p id="list-empty" class="muted small list-empty" hidden>
+          Пока пусто. Создай первого персонажа.
+        </p>
+      </aside>
+
+      <section class="sheet-pane">
+        <div id="sheet-empty" class="sheet-empty muted">
+          <span class="se-mark" aria-hidden="true">&#9636;</span>
+          <p>Выбери запись слева или создай новую.</p>
+        </div>
+
+        <div id="sheet-wrap" class="sheet-wrap" hidden>
+          <div class="sheet-toolbar">
+            <div class="row gap center">
+              <button id="btn-back" class="btn ghost back-btn" title="К списку">&larr;</button>
+              <div id="sheet-mode-badge" class="badge"></div>
+            </div>
+            <div class="row gap center">
+              <div id="dice-tray" class="dice-tray" title="Бросить куб"></div>
+              <button id="btn-edit" class="btn" hidden>ПРАВКА</button>
+              <button id="btn-save" class="btn primary" hidden>СОХРАНИТЬ</button>
+              <button id="btn-delete" class="btn danger" hidden>УДАЛИТЬ</button>
+            </div>
+          </div>
+          <p id="sheet-error" class="error" hidden></p>
+          <form id="sheet-form" class="sheet-form" autocomplete="off"></form>
+        </div>
+      </section>
+    </div>
+
+    <footer class="dt-bar dt-bar-bottom dt-footer">
+      <span class="barcode" aria-hidden="true"></span>
+      <span class="dt-rec">NCPD:DATATERM-PUBLIC-RECORD-PRINT</span>
+    </footer>
+  </section>
+
+  <!-- ===== Диалог пароля ===== -->
+  <div id="pwd-overlay" class="overlay" hidden>
+    <div class="pwd-dialog" role="dialog" aria-modal="true">
+      <h2 id="pwd-title">Пароль</h2>
+      <p id="pwd-desc" class="muted small"></p>
+      <input id="pwd-input" type="password" placeholder="пароль" autocomplete="off" />
+      <p id="pwd-error" class="error" hidden></p>
+      <div class="row gap end">
+        <button id="pwd-cancel" class="btn ghost">ОТМЕНА</button>
+        <button id="pwd-ok" class="btn primary">ОК</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Тост броска кубов ===== -->
+  <div id="dice-toast" class="dice-toast" hidden></div>
+
+  <script src="/config.js"></script>
+  <script type="module" src="/js/app-cyberpunk.js"></script>
+</body>
+</html>

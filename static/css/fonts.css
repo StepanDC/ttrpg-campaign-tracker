@@ -1,0 +1,75 @@
+/* Self-hosted fonts (OFL) — no external CDN, works offline.
+   Cinzel: engraved Roman caps for the wordmark and section headers.
+   EB Garamond: a readable book serif for body text and inputs. */
+
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/cinzel-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/cinzel-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ebgaramond-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/ebgaramond-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/ebgaramond-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/ebgaramond-italic-400.woff2') format('woff2');
+}
+
+/* JSL Blackletter — the official Shadowdark logo face (Latin only).
+   Self-hosted from the cdnfonts file so it works offline. */
+@font-face {
+  font-family: 'JSL Blackletter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/jsl-blackletter.woff') format('woff');
+}
+
+/* User-provided display faces (both include Cyrillic) */
+@font-face {
+  /* gothic fraktur — Cyrillic-capable fallback for the wordmark */
+  font-family: 'CCGothChic';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/01.ttf') format('truetype');
+}
+@font-face {
+  /* bold letterpress serif — used for section headings */
+  font-family: 'Benjamin Franklin';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/02.ttf') format('truetype');
+}

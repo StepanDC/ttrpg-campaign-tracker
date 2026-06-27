@@ -1,0 +1,10 @@
+services:
+  api:
+    build: .
+    ports:
+      - "80:8000"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - ALLOWED_ORIGINS=*
+    restart: unless-stopped

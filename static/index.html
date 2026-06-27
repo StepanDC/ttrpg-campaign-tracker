@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Листы персонажей</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; background: #1a1a1e; }
+    .gate { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem; gap: 2rem; flex-wrap: wrap; }
+    .gate-card {
+      display: flex; align-items: center; justify-content: center;
+      background: #222228; border: 1px solid #2e2e35; border-radius: 12px;
+      padding: 3rem 2.5rem; width: 340px; text-decoration: none;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .gate-card:hover { border-color: #4a4a55; transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,0.45); }
+    .gate-card:active { transform: translateY(0); }
+    .gate-card img { width: 100%; max-width: 280px; height: auto; display: block; }
+  </style>
+</head>
+<body>
+  <div class="gate">
+    <a href="/shadowdark" class="gate-card">
+      <img src="/logo/ShadowDark.png" alt="Shadowdark" />
+    </a>
+    <a href="/cyberpunk" class="gate-card">
+      <img src="/logo/Cyberpunk-RED.png" alt="Cyberpunk RED" />
+    </a>
+  </div>
+</body>
+</html>

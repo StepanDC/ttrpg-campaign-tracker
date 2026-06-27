@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.env
+.claude/
+
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Campaign data — each campaign file contains real character data and hashed
+# passwords (double-hashed, but still sensitive for a friends-only app).
+# Uncomment the next line once you have real data you want to keep out of git:
+# data/*.json
+
+# Keep the data directory in git but not the campaign files
+data/*
+!data/.gitkeep
