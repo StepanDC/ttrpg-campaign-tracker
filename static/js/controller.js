@@ -479,14 +479,19 @@ export function initApp(sys, cfg) {
   // ======================================================================= //
   const DICE = [4, 6, 8, 10, 12, 20, 100];
   const diceTray = $('dice-tray');
+  const diceTrayMobile = $('dice-tray-mobile');
   for (const sides of DICE) {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'die-btn';
-    b.textContent = `d${sides}`;
-    b.title = `Бросить d${sides}`;
-    b.addEventListener('click', () => rollAndShow(sides));
-    diceTray.append(b);
+    const mkBtn = () => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'die-btn';
+      b.textContent = `d${sides}`;
+      b.title = `Бросить d${sides}`;
+      b.addEventListener('click', () => rollAndShow(sides));
+      return b;
+    };
+    diceTray.append(mkBtn());
+    if (diceTrayMobile) diceTrayMobile.append(mkBtn());
   }
   document.addEventListener('sd-roll', (e) => {
     const d = e.detail;
