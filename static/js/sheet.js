@@ -25,13 +25,15 @@ export function defaultSheet() {
     stats: { str: 10, dex: 10, con: 10, int: 10, wis: 10, cha: 10 },
     hp: { current: 0, max: 0 },
     ac: 10,
-    hitDie: 'd6',
     attacks: [],
     talents: '',
     spells: [],
     inventory: [],
+    freeCarry: [],
+    slotsMax: 0,        // 0 = auto (max STR, 10); >0 = manual override
     coins: { gp: 0, sp: 0, cp: 0 },
     xp: 0,
+    xpNext: 10,
     notes: '',
   };
 }
@@ -49,6 +51,7 @@ export function normalize(data) {
     attacks: Array.isArray(src.attacks) ? src.attacks : [],
     spells: Array.isArray(src.spells) ? src.spells : [],
     inventory: Array.isArray(src.inventory) ? src.inventory : [],
+    freeCarry: Array.isArray(src.freeCarry) ? src.freeCarry : [],
   };
 }
 
@@ -68,9 +71,11 @@ export function fmtMod(mod) {
   return mod >= 0 ? `+${mod}` : `${mod}`;
 }
 
-// Shadowdark gear slots: capacity = max(STR score, 10); 100 coins fill 1 slot.
+// Shadowdark gear slots: capacity defaults to max(STR score, 10) but can be
+// overridden manually (slotsMax > 0). 100 coins fill 1 slot.
 export function slotCapacity(sheet) {
-  return Math.max(Number(sheet.stats.str) || 0, 10);
+  const manual = Number(sheet.slotsMax) || 0;
+  return manual > 0 ? manual : Math.max(Number(sheet.stats.str) || 0, 10);
 }
 
 export function slotsUsed(sheet) {
@@ -108,6 +113,14 @@ function fieldBlock(label, control, cls = '') {
   return el('label', { class: `sf-field ${cls}` }, [el('span', { class: 'sf-label', text: label }), control]);
 }
 
+// A field showing two numbers as "a / b" (e.g. HP current/max, XP now/next).
+function pairedField(label, ctrlA, ctrlB, cls = '') {
+  return el('label', { class: `sf-field ${cls}` }, [
+    el('span', { class: 'sf-label', text: label }),
+    el('div', { class: 'sf-pair' }, [ctrlA, el('span', { class: 'sf-slash', text: '/' }), ctrlB]),
+  ]);
+}
+
 // Dice rolls stay decoupled from the dice module: the form just emits an event
 // that app.js listens for and turns into a toast. Purely local, no backend.
 function emitRoll(form, detail) {
@@ -141,7 +154,20 @@ export function renderSheet(form, rawData, { editable }) {
     fieldBlock('Имя', input('name', sheet.name, { disabled: dis, placeholder: 'Безымянный' }), 'wide'),
     fieldBlock('Предок', input('ancestry', sheet.ancestry, { disabled: dis })),
     fieldBlock('Класс', input('charClass', sheet.charClass, { disabled: dis })),
-    fieldBlock('Уровень', input('level', sheet.level, { type: 'number', min: 0, disabled: dis })),
+    el('div', { class: 'sf-progress' }, [
+      el('div', { class: 'progress-cell lvl' }, [
+        el('span', { class: 'sf-label', text: 'Уровень' }),
+        input('level', sheet.level, { type: 'number', min: 0, disabled: dis }),
+      ]),
+      el('div', { class: 'progress-cell xp' }, [
+        el('span', { class: 'sf-label', text: 'Опыт' }),
+        el('div', { class: 'sf-pair' }, [
+          input('xp', sheet.xp, { type: 'number', min: 0, disabled: dis }),
+          el('span', { class: 'sf-slash', text: '/' }),
+          input('xpNext', sheet.xpNext, { type: 'number', min: 0, disabled: dis }),
+        ]),
+      ]),
+    ]),
     fieldBlock('Титул', input('title', sheet.title, { disabled: dis })),
     fieldBlock('Мировоззрение', input('alignment', sheet.alignment, { disabled: dis })),
     fieldBlock('Происхождение', input('background', sheet.background, { disabled: dis })),
@@ -185,29 +211,22 @@ export function renderSheet(form, rawData, { editable }) {
 
   // Combat --------------------------------------------------------------- //
   const combat = el('div', { class: 'sf-grid sf-combat' }, [
-    fieldBlock('Хиты (тек.)', input('hp_current', sheet.hp.current, { type: 'number', disabled: dis })),
-    fieldBlock('Хиты (макс.)', input('hp_max', sheet.hp.max, { type: 'number', disabled: dis })),
+    pairedField(
+      'ОЗ',
+      input('hp_current', sheet.hp.current, { type: 'number', disabled: dis }),
+      input('hp_max', sheet.hp.max, { type: 'number', disabled: dis }),
+    ),
     fieldBlock('КД', input('ac', sheet.ac, { type: 'number', disabled: dis })),
-    fieldBlock('Кость хитов', input('hitDie', sheet.hitDie, { disabled: dis, placeholder: 'd6' })),
-    fieldBlock('Опыт (XP)', input('xp', sheet.xp, { type: 'number', min: 0, disabled: dis })),
   ]);
   form.append(section('Бой', combat));
 
   // Attacks (dynamic) ---------------------------------------------------- //
   form.append(
-    dynamicList(
-      form,
-      'Атаки',
-      'attacks',
-      sheet.attacks,
-      dis,
-      [
-        { key: 'name', label: 'Оружие', cls: 'grow' },
-        { key: 'bonus', label: 'Бонус', cls: 'narrow' },
-        { key: 'damage', label: 'Урон', cls: 'narrow' },
-      ],
-      { roll: { modKey: 'bonus', labelKey: 'name' } },
-    ),
+    dynamicList(form, 'Атаки', 'attacks', sheet.attacks, dis, [
+      { key: 'name', label: 'Оружие', cls: 'grow' },
+      { key: 'bonus', label: 'Бонус', cls: 'tiny' },
+      { key: 'damage', label: 'Урон', cls: 'tiny' },
+    ]),
   );
 
   // Talents -------------------------------------------------------------- //
@@ -228,22 +247,36 @@ export function renderSheet(form, rawData, { editable }) {
     ]),
   );
 
-  // Inventory (dynamic) + slot meter ------------------------------------- //
-  const invSection = dynamicList(form, 'Инвентарь', 'inventory', sheet.inventory, dis, [
+  // Inventory: carried items + free-to-carry list + coins, with an editable
+  // slot counter (used / capacity) in the section header. -------------- //
+  const invItems = makeRows(form, 'inventory', sheet.inventory, dis, [
     { key: 'name', label: 'Предмет', cls: 'grow' },
-    { key: 'slots', label: 'Слоты', cls: 'narrow', type: 'number' },
+    { key: 'slots', label: 'Слот', cls: 'narrow', type: 'number' },
   ]);
-  const slotMeter = el('div', { class: 'slot-meter', id: 'slot-meter' });
+  const freeItems = makeRows(form, 'freeCarry', sheet.freeCarry, dis, [
+    { key: 'name', label: 'Предмет', cls: 'grow' },
+  ]);
+
+  const invBody = el('div', { class: 'sf-invbody' }, [invItems.wrap]);
+  if (invItems.addBtn) invBody.append(invItems.addBtn);
+  invBody.append(el('div', { class: 'sf-subhead', text: 'Свободно к переноске' }), freeItems.wrap);
+  if (freeItems.addBtn) invBody.append(freeItems.addBtn);
+  invBody.append(
+    el('div', { class: 'sf-grid sf-coins' }, [
+      fieldBlock('Золото', input('gp', sheet.coins.gp, { type: 'number', min: 0, disabled: dis })),
+      fieldBlock('Серебро', input('sp', sheet.coins.sp, { type: 'number', min: 0, disabled: dis })),
+      fieldBlock('Медь', input('cp', sheet.coins.cp, { type: 'number', min: 0, disabled: dis })),
+    ]),
+  );
+
+  const invSection = section('Инвентарь', invBody);
+  const slotMeter = el('div', { class: 'slot-meter', id: 'slot-meter' }, [
+    el('span', { class: 'slot-used', text: '0' }),
+    el('span', { class: 'sf-slash', text: '/' }),
+    input('slotsMax', slotCapacity(sheet), { type: 'number', min: 0, disabled: dis, class: 'slot-max' }),
+  ]);
   invSection.querySelector('.sf-section-head').append(slotMeter);
   form.append(invSection);
-
-  // Coins ---------------------------------------------------------------- //
-  const coins = el('div', { class: 'sf-grid sf-coins' }, [
-    fieldBlock('Золото (GP)', input('gp', sheet.coins.gp, { type: 'number', min: 0, disabled: dis })),
-    fieldBlock('Серебро (SP)', input('sp', sheet.coins.sp, { type: 'number', min: 0, disabled: dis })),
-    fieldBlock('Медь (CP)', input('cp', sheet.coins.cp, { type: 'number', min: 0, disabled: dis })),
-  ]);
-  form.append(section('Монеты', coins));
 
   // Notes ---------------------------------------------------------------- //
   const notes = el('textarea', { name: 'notes', rows: 3, disabled: dis, placeholder: 'Заметки…' });
@@ -262,9 +295,11 @@ function section(heading, body) {
   return sec;
 }
 
-function dynamicList(form, heading, name, rows, disabled, cols, opts = {}) {
-  const sec = section(heading, el('div', { class: 'sf-rows', 'data-list': name }));
-  const container = sec.querySelector('.sf-rows');
+// Build a serializable rows list (the `.sf-rows[data-list]` container + its
+// "+ строка" button). Returned separately so several lists can share one
+// section (e.g. inventory + free-to-carry). read() picks up every .sf-rows.
+function makeRows(form, name, rows, disabled, cols, opts = {}) {
+  const wrap = el('div', { class: 'sf-rows', 'data-list': name });
 
   const addRow = (values = {}) => {
     const row = el('div', { class: 'sf-row' });
@@ -284,7 +319,7 @@ function dynamicList(form, heading, name, rows, disabled, cols, opts = {}) {
       const roll = el('button', { type: 'button', class: 'btn ghost row-roll', text: '🎲', title: 'Бросок d20' });
       roll.addEventListener('click', () => {
         const mod = Number(byKey[opts.roll.modKey]?.value) || 0;
-        const labelText = byKey[opts.roll.labelKey]?.value || heading;
+        const labelText = byKey[opts.roll.labelKey]?.value || name;
         emitRoll(form, { label: `${labelText} (атака)`, sides: 20, mod });
       });
       row.append(roll);
@@ -297,18 +332,26 @@ function dynamicList(form, heading, name, rows, disabled, cols, opts = {}) {
       });
       row.append(rm);
     }
-    container.append(row);
+    wrap.append(row);
   };
 
   rows.forEach((r) => addRow(r));
-
-  if (!disabled) {
-    const add = el('button', { type: 'button', class: 'btn small add-row', text: '+ строка' });
-    add.addEventListener('click', () => addRow());
-    sec.querySelector('.sf-section-head').append(add);
-  }
   // Stash column meta so read() knows how to serialize this list.
-  container._cols = cols;
+  wrap._cols = cols;
+
+  let addBtn = null;
+  if (!disabled) {
+    addBtn = el('button', { type: 'button', class: 'btn small add-row', text: '+ строка' });
+    addBtn.addEventListener('click', () => addRow());
+  }
+  return { wrap, addBtn };
+}
+
+// Thin wrapper: a titled section wrapping a single rows list, add button in head.
+function dynamicList(form, heading, name, rows, disabled, cols, opts = {}) {
+  const { wrap, addBtn } = makeRows(form, name, rows, disabled, cols, opts);
+  const sec = section(heading, wrap);
+  if (addBtn) sec.querySelector('.sf-section-head').append(addBtn);
   return sec;
 }
 
@@ -318,7 +361,8 @@ function updateSlots(form) {
   const data = read(form);
   const used = slotsUsed(data);
   const cap = slotCapacity(data);
-  meter.textContent = `Слоты: ${used} / ${cap}`;
+  const usedEl = meter.querySelector('.slot-used');
+  if (usedEl) usedEl.textContent = used;
   meter.classList.toggle('over', used > cap);
 }
 
@@ -362,13 +406,15 @@ export function read(form) {
     },
     hp: { current: num('hp_current'), max: num('hp_max') },
     ac: num('ac'),
-    hitDie: v('hitDie'),
     attacks: lists.attacks || [],
     talents: v('talents'),
     spells: lists.spells || [],
     inventory: lists.inventory || [],
+    freeCarry: lists.freeCarry || [],
+    slotsMax: num('slotsMax'),
     coins: { gp: num('gp'), sp: num('sp'), cp: num('cp') },
     xp: num('xp'),
+    xpNext: num('xpNext'),
     notes: v('notes'),
   };
 }
