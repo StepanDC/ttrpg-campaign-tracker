@@ -1,0 +1,88 @@
+/* ====================================================================== *
+ *  Cyberpunk RED — reference sheets. Layered on top of cyberpunk.css,
+ *  reusing its :root variables and DataTerm components.
+ * ====================================================================== */
+
+.ref-page {
+  --ref-max: 900px;
+  display: flex; flex-direction: column;
+  height: 100vh; overflow: hidden;
+}
+.ref-header { flex: 0 0 auto; }
+.ref-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+
+.ref-subbar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 0.6rem; flex-wrap: wrap;
+  padding: 0.4rem 0.7rem; border-bottom: 2px solid var(--ink); background: var(--paper);
+}
+.ref-subbar .btn { text-decoration: none; }
+
+/* ---- table of contents ---- */
+.ref-toc { width: 100%; max-width: var(--ref-max); margin: 0.8rem auto 0; padding: 0 1rem; }
+.ref-toc-inner { border: 2px solid var(--ink); background: var(--paper); }
+.ref-toc h2 {
+  margin: 0; padding: 0.3rem 0.6rem;
+  background: var(--fill); border-bottom: 2px solid var(--ink);
+  font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em;
+}
+.ref-toc-group { padding: 0.45rem 0.8rem; }
+.ref-toc-group + .ref-toc-group { border-top: 1px solid var(--ink-soft); }
+.ref-toc-group h3 {
+  margin: 0 0 0.3rem; font-size: 0.72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+}
+.ref-toc ul { list-style: none; margin: 0; padding: 0; }
+.ref-toc li { margin: 0.12rem 0; font-size: 0.82rem; }
+.ref-toc a { text-decoration: none; }
+.ref-toc a:hover { text-decoration: underline; }
+
+/* ---- sheets ---- */
+.ref-main { width: 100%; max-width: var(--ref-max); margin: 0 auto; padding: 0.8rem 1rem 2rem; }
+.ref-sheet { border: 2px solid var(--ink); background: var(--paper); margin-bottom: 1.2rem; }
+.ref-sheet-title {
+  margin: 0; padding: 0.45rem 0.7rem;
+  background: var(--ink); color: var(--paper);
+  font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.ref-section { padding: 0.7rem 0.8rem; border-bottom: 1px solid var(--ink-soft); }
+.ref-section:last-child { border-bottom: 0; }
+.ref-section h3 {
+  margin: 0 0 0.5rem; padding-bottom: 0.2rem;
+  font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--ink);
+}
+.ref-sub { margin-top: 0.7rem; }
+.ref-sub h4 { margin: 0 0 0.35rem; font-size: 0.82rem; letter-spacing: 0.04em; }
+
+.ref-section p { margin: 0.4rem 0; }
+.ref-section ul { margin: 0.35rem 0; padding-left: 1.25rem; }
+.ref-section li { margin: 0.15rem 0; }
+.ref-section code { background: var(--fill); padding: 0 0.25rem; white-space: nowrap; }
+.ref-formula { margin: 0.35rem 0; }
+.ref-formula code { display: inline-block; white-space: normal; padding: 0.1rem 0.35rem; }
+.ref-note { color: var(--muted); font-size: 0.8rem; }
+
+.ref-example { margin: 0.6rem 0; padding: 0.5rem 0.7rem; border-left: 3px solid var(--ink); background: var(--fill); }
+.ref-example > :first-child { margin-top: 0; }
+.ref-example > :last-child { margin-bottom: 0; }
+
+/* ---- tables ---- */
+.ref-table-wrap { overflow-x: auto; margin: 0.6rem 0; }
+table.ref-table { border-collapse: collapse; width: 100%; font-size: 0.8rem; }
+table.ref-table th, table.ref-table td {
+  border: 1px solid var(--ink); padding: 0.28rem 0.45rem;
+  text-align: left; vertical-align: top;
+}
+table.ref-table th {
+  background: var(--fill); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.03em; font-size: 0.72rem;
+  white-space: nowrap;
+}
+table.ref-table tbody tr:nth-child(even) { background: var(--paper-2); }
+table.ref-table td:first-child { white-space: nowrap; }
+table.ref-table.ref-center td, table.ref-table.ref-center th { text-align: center; }
+
+@media (max-width: 700px) {
+  .ref-page { --ref-max: 100%; }
+}

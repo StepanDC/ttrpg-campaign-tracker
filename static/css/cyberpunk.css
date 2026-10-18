@@ -164,6 +164,8 @@ textarea { resize: vertical; }
 .sidebar-head h2 { margin: 0; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.1em; }
 .char-list { list-style: none; margin: 0; padding: 0; overflow-y: auto; flex: 1 1 auto; }
 .list-empty { padding: 0.8rem; }
+.sidebar-foot { flex: 0 0 auto; border-top: 2px solid var(--ink); background: var(--fill); padding: 0.5rem 0.6rem; }
+.sidebar-foot-link { display: block; text-align: center; text-decoration: none; }
 
 .char-row {
   width: 100%; display: flex; align-items: center; gap: 0.5rem; text-align: left;
@@ -213,6 +215,10 @@ textarea { resize: vertical; }
 .sf-field.wide { grid-column: 1 / -1; }
 .sf-label { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
 
+/* ---- armor: SP with a manual penalty field under each ---- */
+.cp-armor { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.5rem; }
+.cp-armor-col { display: flex; flex-direction: column; gap: 0.35rem; }
+
 .sf-identity-row { display: flex; gap: 0.7rem; align-items: flex-start; }
 .portrait-box { width: 96px; height: 120px; flex: 0 0 auto; border: 1px solid var(--ink); background: var(--paper-2); display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .portrait-box.empty::after { content: '☗'; font-size: 2rem; color: var(--muted); }
@@ -235,6 +241,7 @@ textarea { resize: vertical; }
 .der-name { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
 .der-val { font-size: 1.25rem; font-weight: 700; }
 .der-box .stat-score { font-size: 1.25rem; }
+.der-box .der-pair input.stat-score { width: 2.4rem; }
 .der-hint { font-size: 0.6rem; color: var(--muted); }
 
 /* ---- skills ---- */

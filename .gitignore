@@ -4,6 +4,7 @@ __pycache__/
 venv/
 .env
 .claude/
+reference_sheets/cyberpunk/.obsidian
 
 *.tmp
 .DS_Store

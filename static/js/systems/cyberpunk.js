@@ -56,6 +56,96 @@ const SKILLS = [
   ]],
 ];
 
+// Skills that cost double IP to raise (CP:RED) — shown with an (x2) tag.
+const DOUBLE_IP_SKILLS = new Set([
+  'Autofire', 'Demolitions', 'Electronics/Security Tech', 'Heavy Weapons',
+  'Martial Arts', 'Paramedic', 'Pilot Air Vehicle',
+]);
+
+// Russian labels shown as hover tooltips on the original English names.
+const STAT_RU = {
+  int: 'Интеллект', ref: 'Реакция', dex: 'Ловкость', tech: 'Техника', cool: 'Хладнокровие',
+  will: 'Воля', luck: 'Удача', move: 'Скорость', body: 'Телосложение', emp: 'Эмпатия',
+};
+
+const SKILL_RU = {
+  // Awareness
+  'Concentration': 'Концентрация',
+  'Conceal/Reveal Object': 'Скрыть/обнаружить предмет',
+  'Lip Reading': 'Чтение по губам',
+  'Perception': 'Восприятие',
+  'Tracking': 'Выслеживание',
+  // Body
+  'Athletics': 'Атлетика',
+  'Contortionist': 'Гибкость',
+  'Dance': 'Танцы',
+  'Endurance': 'Выносливость',
+  'Resist Torture/Drugs': 'Сопротивление пыткам/наркотикам',
+  'Stealth': 'Скрытность',
+  // Technique
+  'Air Vehicle Tech': 'Техобслуживание (авиа)',
+  'Basic Tech': 'Базовые технологии',
+  'Cybertech': 'Кибертех',
+  'Demolitions': 'Подрывное дело',
+  'Electronics/Security Tech': 'Электроника/безопасность',
+  'First Aid': 'Первая помощь',
+  'Forgery': 'Подделка',
+  'Land Vehicle Tech': 'Техобслуживание (наземн.)',
+  'Paint/Draw/Sculpt': 'Живопись/рисование',
+  'Paramedic': 'Парамедицина',
+  'Photography/Film': 'Фото/кино',
+  'Pick Lock': 'Взлом замков',
+  'Pick Pocket': 'Карманная кража',
+  'Sea Vehicle Tech': 'Техобслуживание (морск.)',
+  'Weaponstech': 'Оружейное дело',
+  // Education
+  'Accounting': 'Бухгалтерия',
+  'Animal Handling': 'Обращение с животными',
+  'Bureaucracy': 'Бюрократия',
+  'Business': 'Бизнес',
+  'Composition': 'Композиция',
+  'Criminology': 'Криминология',
+  'Cryptography': 'Криптография',
+  'Deduction': 'Дедукция',
+  'Education': 'Образование',
+  'Gamble': 'Азартные игры',
+  'Language': 'Язык',
+  'Library Search': 'Поиск в архивах',
+  'Local Expert': 'Знание местности',
+  'Science': 'Наука',
+  'Tactics': 'Тактика',
+  'Wilderness Survival': 'Выживание в дикой природе',
+  // Fighting
+  'Brawling': 'Драка',
+  'Evasion': 'Уклонение',
+  'Martial Arts': 'Боевые искусства',
+  'Melee Weapon': 'Холодное оружие',
+  // Performance
+  'Acting': 'Актёрское мастерство',
+  'Play Instrument': 'Игра на инструменте',
+  // Ranged Weapon
+  'Archery': 'Стрельба из лука',
+  'Autofire': 'Автоматический огонь',
+  'Handgun': 'Пистолеты',
+  'Heavy Weapons': 'Тяжёлое оружие',
+  'Shoulder Arms': 'Длинноствольное оружие',
+  // Social
+  'Bribery': 'Подкуп',
+  'Conversation': 'Общение',
+  'Human Perception': 'Проницательность',
+  'Interrogation': 'Допрос',
+  'Persuasion': 'Убеждение',
+  'Personal Grooming': 'Уход за собой',
+  'Streetwise': 'Знание улиц',
+  'Trading': 'Торговля',
+  'Wardrobe & Style': 'Гардероб и стиль',
+  // Control
+  'Drive Land Vehicle': 'Вождение (наземн.)',
+  'Pilot Air Vehicle': 'Пилотирование (авиа)',
+  'Pilot Sea Vehicle': 'Пилотирование (морск.)',
+  'Riding': 'Верховая езда',
+};
+
 export function defaultSheet() {
   return {
     handle: '',
@@ -73,13 +163,13 @@ export function defaultSheet() {
     background: '',
     stats: {
       int: 6, ref: 6, dex: 6, tech: 6, cool: 6, will: 6,
-      luck: { current: 6, max: 6 }, move: 6, body: 6, emp: 6,
+      luck: { current: 6, max: 6 }, move: 6, body: 6, emp: { current: 6, max: 6 },
     },
     hp: { current: 0 },
     humanity: { current: 0 },
     skills: {}, // name -> { level, spec }
     weapons: [],
-    armor: { headSP: 0, bodySP: 0, shieldSP: 0 },
+    armor: { headSP: 0, bodySP: 0, shieldSP: 0, headPenalty: 0, bodyPenalty: 0, shieldPenalty: 0 },
     cyberware: [],
     gear: [],
     money: { eurodollars: 0, ip: 0, rep: 0 },
@@ -91,10 +181,20 @@ export function defaultSheet() {
 export function normalize(data) {
   const d = defaultSheet();
   const src = data || {};
+  const srcStats = src.stats || {};
+  const rawEmp = srcStats.emp;
+  const emp = typeof rawEmp === 'object' && rawEmp !== null
+    ? { ...d.stats.emp, ...rawEmp }
+    : { current: Number(rawEmp) || d.stats.emp.current, max: Number(rawEmp) || d.stats.emp.max };
   return {
     ...d,
     ...src,
-    stats: { ...d.stats, ...(src.stats || {}), luck: { ...d.stats.luck, ...((src.stats || {}).luck || {}) } },
+    stats: {
+      ...d.stats,
+      ...srcStats,
+      luck: { ...d.stats.luck, ...(srcStats.luck || {}) },
+      emp,
+    },
     hp: { ...d.hp, ...(src.hp || {}) },
     humanity: { ...d.humanity, ...(src.humanity || {}) },
     armor: { ...d.armor, ...(src.armor || {}) },
@@ -158,18 +258,21 @@ export function renderSheet(form, data, { editable } = {}) {
   const statRow = el('div', { class: 'cp-stats' });
   for (const [key, label] of STATS) {
     let ctrl;
-    if (key === 'luck') {
-      const cur = input('stat_luck_current', sheet.stats.luck.current, { type: 'number', min: 0, disabled: dis, class: 'stat-score' });
-      const max = input('stat_luck_max', sheet.stats.luck.max, { type: 'number', min: 0, disabled: dis, class: 'stat-score' });
+    if (key === 'luck' || key === 'emp') {
+      const cur = input(`stat_${key}_current`, sheet.stats[key].current, { type: 'number', min: 0, disabled: dis, class: 'stat-score' });
+      const max = input(`stat_${key}_max`, sheet.stats[key].max, { type: 'number', min: 0, disabled: dis, class: 'stat-score' });
+      cur.addEventListener('input', recompute);
+      max.addEventListener('input', recompute);
       ctrl = el('div', { class: 'luck-pair' }, [cur, el('span', { class: 'slash', text: '/' }), max]);
-      statInputs.luck = cur;
+      statInputs[key] = cur;
+      statInputs[`${key}Max`] = max;
     } else {
       const inp = input(`stat_${key}`, sheet.stats[key], { type: 'number', min: 0, max: 30, disabled: dis, class: 'stat-score' });
       inp.addEventListener('input', recompute);
       statInputs[key] = inp;
       ctrl = inp;
     }
-    statRow.append(el('div', { class: 'stat-box' }, [el('div', { class: 'stat-name', text: label }), ctrl]));
+    statRow.append(el('div', { class: 'stat-box' }, [el('div', { class: 'stat-name', text: label, title: STAT_RU[key] || '' }), ctrl]));
   }
   form.append(section('Характеристики', statRow));
 
@@ -181,13 +284,17 @@ export function renderSheet(form, data, { editable } = {}) {
   };
   const hpCur = input('hp_current', sheet.hp.current, { type: 'number', disabled: dis, class: 'stat-score' });
   const humCur = input('humanity_current', sheet.humanity.current, { type: 'number', disabled: dis, class: 'stat-score' });
+  const humMaxEl = el('span', { class: 'stat-score', text: '—' });
+  derived.humMax = humMaxEl;
   const derRow = el('div', { class: 'cp-derived' }, [
     el('div', { class: 'der-box' }, [el('div', { class: 'der-name', text: 'HP тек.' }), hpCur]),
     mk('HP макс.', 'hpMax'),
     mk('Тяж. ранен', 'swt', 'seriously wounded'),
-    mk('Death Save', 'deathSave'),
-    el('div', { class: 'der-box' }, [el('div', { class: 'der-name', text: 'Humanity' }), humCur]),
-    mk('Humanity макс.', 'humMax'),
+    mk('Спасбросок', 'deathSave'),
+    el('div', { class: 'der-box' }, [
+      el('div', { class: 'der-name', text: 'Humanity' }),
+      el('div', { class: 'luck-pair der-pair' }, [humCur, el('span', { class: 'slash', text: '/' }), humMaxEl]),
+    ]),
   ]);
   form.append(section('Производные', derRow));
 
@@ -205,8 +312,8 @@ export function renderSheet(form, data, { editable } = {}) {
       const lvl = input('skill_level', saved.level ?? 0, { type: 'number', min: 0, max: 10, disabled: dis, class: 'cp-skill-lvl' });
       lvl.addEventListener('input', recompute);
       const nameWrap = el('div', { class: 'cp-skill-name' }, [
-        el('span', { class: 'cp-skill-label', text: name }),
-        el('span', { class: 'cp-skill-stat', text: statKey.toUpperCase() }),
+        el('span', { class: 'cp-skill-label', text: DOUBLE_IP_SKILLS.has(name) ? `${name} (x2)` : name, title: SKILL_RU[name] || name }),
+        el('span', { class: 'cp-skill-stat', text: statKey.toUpperCase(), title: STAT_RU[statKey] || '' }),
       ]);
       if (hasSpec) {
         const spec = input('skill_spec', saved.spec || '', { disabled: dis, placeholder: '×спец.', class: 'cp-skill-spec' });
@@ -224,27 +331,34 @@ export function renderSheet(form, data, { editable } = {}) {
     if (!editable && visible === 0) continue;
     skillsWrap.append(el('div', { class: 'cp-skill-cat' }, [el('h4', { class: 'cp-skill-cat-head', text: cat }), grid]));
   }
-  form.append(section('Навыки', skillsWrap));
+  const skillsSec = section('Навыки', skillsWrap);
+  if (editable || skillsWrap.childElementCount > 0) form.append(skillsSec);
 
   // ---- combat: weapons ---- //
-  form.append(dynamicList(form, 'Оружие', 'weapons', sheet.weapons, dis, [
+  const weaponsSec = dynamicList(form, 'Оружие', 'weapons', sheet.weapons, dis, [
     { key: 'name', label: 'Оружие', cls: 'grow' },
     { key: 'damage', label: 'Урон', cls: 'narrow' },
     { key: 'rof', label: 'ROF', cls: 'tiny' },
     { key: 'ammo', label: 'Патроны', cls: 'narrow' },
     { key: 'bonus', label: 'Навык', cls: 'tiny' },
-  ], { roll: { modKey: 'bonus', labelKey: 'name' } }));
+  ], { roll: { modKey: 'bonus', labelKey: 'name' } });
+  if (editable || sheet.weapons.length) form.append(weaponsSec);
 
   // ---- armor ---- //
-  const armorGrid = el('div', { class: 'sf-grid' }, [
-    fieldBlock('Head SP', input('armor_headSP', sheet.armor.headSP, { type: 'number', min: 0, disabled: dis })),
-    fieldBlock('Body SP', input('armor_bodySP', sheet.armor.bodySP, { type: 'number', min: 0, disabled: dis })),
-    fieldBlock('Щит SP', input('armor_shieldSP', sheet.armor.shieldSP, { type: 'number', min: 0, disabled: dis })),
+  const armorCol = (label, spName, spVal, penName, penVal) =>
+    el('div', { class: 'cp-armor-col' }, [
+      fieldBlock(label, input(spName, spVal, { type: 'number', min: 0, disabled: dis })),
+      input(penName, penVal, { type: 'text', disabled: dis, placeholder: 'Заметка' }),
+    ]);
+  const armorGrid = el('div', { class: 'cp-armor' }, [
+    armorCol('Head SP', 'armor_headSP', sheet.armor.headSP, 'armor_headPenalty', sheet.armor.headPenalty),
+    armorCol('Body SP', 'armor_bodySP', sheet.armor.bodySP, 'armor_bodyPenalty', sheet.armor.bodyPenalty),
+    armorCol('Shield SP', 'armor_shieldSP', sheet.armor.shieldSP, 'armor_shieldPenalty', sheet.armor.shieldPenalty),
   ]);
   form.append(section('Броня', armorGrid));
 
   // ---- cyberware ---- //
-  const cyberSec = dynamicList(form, 'Кибервар', 'cyberware', sheet.cyberware, dis, [
+  const cyberSec = dynamicList(form, 'Киберимпланты', 'cyberware', sheet.cyberware, dis, [
     { key: 'name', label: 'Имплант', cls: 'grow' },
     { key: 'location', label: 'Локация', cls: 'narrow' },
     { key: 'hl', label: 'HL', cls: 'tiny', type: 'number' },
@@ -252,14 +366,15 @@ export function renderSheet(form, data, { editable } = {}) {
   ]);
   cyberRows = cyberSec.querySelector('.sf-rows');
   cyberRows.addEventListener('input', recompute);
-  form.append(cyberSec);
+  if (editable || sheet.cyberware.length) form.append(cyberSec);
 
   // ---- gear / money / crit / notes ---- //
-  form.append(dynamicList(form, 'Снаряжение', 'gear', sheet.gear, dis, [
+  const gearSec = dynamicList(form, 'Снаряжение', 'gear', sheet.gear, dis, [
     { key: 'item', label: 'Предмет', cls: 'grow' },
     { key: 'qty', label: 'Кол-во', cls: 'tiny', type: 'number' },
     { key: 'notes', label: 'Заметки', cls: 'grow' },
-  ]));
+  ]);
+  if (editable || sheet.gear.length) form.append(gearSec);
 
   const moneyGrid = el('div', { class: 'sf-grid' }, [
     fieldBlock('Eurodollars (€$)', input('money_eurodollars', sheet.money.eurodollars, { type: 'number', min: 0, disabled: dis })),
@@ -268,9 +383,10 @@ export function renderSheet(form, data, { editable } = {}) {
   ]);
   form.append(section('Деньги и репутация', moneyGrid));
 
-  form.append(dynamicList(form, 'Критические ранения', 'critinjuries', sheet.critinjuries, dis, [
+  const critSec = dynamicList(form, 'Критические ранения', 'critinjuries', sheet.critinjuries, dis, [
     { key: 'text', label: 'Ранение', cls: 'grow' },
-  ]));
+  ]);
+  if (editable || sheet.critinjuries.length) form.append(critSec);
 
   const lifepath = el('div', { class: 'sf-grid' }, [
     fieldBlock('Cultural Origin', input('culturalOrigin', sheet.culturalOrigin, { disabled: dis })),
@@ -280,7 +396,7 @@ export function renderSheet(form, data, { editable } = {}) {
     fieldBlock('Affectation', input('affectation', sheet.affectation, { disabled: dis })),
     fieldBlock('Most Valued', input('valueMost', sheet.valueMost, { disabled: dis })),
   ]);
-  form.append(section('Lifepath', lifepath));
+  form.append(section('Жизненный путь', lifepath));
 
   const notes = el('textarea', { class: 'board-notes', name: 'notes', rows: '5', placeholder: 'Заметки…' });
   notes.value = sheet.notes || '';
@@ -290,14 +406,14 @@ export function renderSheet(form, data, { editable } = {}) {
   recompute();
 
   function recompute() {
-    const body = statInputs.body?.value, will = statInputs.will?.value, emp = num(statInputs.emp?.value);
+    const body = statInputs.body?.value, will = statInputs.will?.value, empMax = num(statInputs.empMax?.value);
     const max = hpMax(body, will);
     if (derived.hpMax) derived.hpMax.textContent = max;
     if (derived.swt) derived.swt.textContent = Math.floor(max / 2);
     if (derived.deathSave) derived.deathSave.textContent = num(body);
     let hl = 0;
     if (cyberRows) for (const i of cyberRows.querySelectorAll('[name="hl_row"]')) hl += num(i.value);
-    if (derived.humMax) derived.humMax.textContent = Math.max(0, emp * 10 - hl);
+    if (derived.humMax) derived.humMax.textContent = Math.max(0, empMax * 10 - hl);
     for (const r of skillRows) {
       r.totalEl.textContent = num(statInputs[r.statKey]?.value) + num(r.levelInput.value);
     }
@@ -344,13 +460,17 @@ export function read(form) {
       int: n('stat_int'), ref: n('stat_ref'), dex: n('stat_dex'), tech: n('stat_tech'),
       cool: n('stat_cool'), will: n('stat_will'),
       luck: { current: n('stat_luck_current'), max: n('stat_luck_max') },
-      move: n('stat_move'), body: n('stat_body'), emp: n('stat_emp'),
+      move: n('stat_move'), body: n('stat_body'),
+      emp: { current: n('stat_emp_current'), max: n('stat_emp_max') },
     },
     hp: { current: n('hp_current') },
     humanity: { current: n('humanity_current') },
     skills,
     weapons: rows('weapons', ['name', 'damage', 'rof', 'ammo', 'bonus']),
-    armor: { headSP: n('armor_headSP'), bodySP: n('armor_bodySP'), shieldSP: n('armor_shieldSP') },
+    armor: {
+      headSP: n('armor_headSP'), bodySP: n('armor_bodySP'), shieldSP: n('armor_shieldSP'),
+      headPenalty: v('armor_headPenalty'), bodyPenalty: v('armor_bodyPenalty'), shieldPenalty: v('armor_shieldPenalty'),
+    },
     cyberware: rows('cyberware', ['name', 'location', 'hl', 'notes']),
     gear: rows('gear', ['item', 'qty', 'notes']),
     money: { eurodollars: n('money_eurodollars'), ip: n('money_ip'), rep: n('money_rep') },
