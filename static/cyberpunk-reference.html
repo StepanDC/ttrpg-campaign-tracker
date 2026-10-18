@@ -35,441 +35,743 @@
         <div class="ref-toc-group">
           <h3>Порядок Боя и Действия</h3>
           <ul>
-            <li><a href="#combat-order">Порядок действий в бою</a></li>
-            <li><a href="#intimidate">Запугивание</a></li>
-            <li><a href="#combat-actions">Доступные боевые действия</a></li>
-            <li><a href="#ranged">Дальний бой</a></li>
-            <li><a href="#melee">Ближний бой</a></li>
-            <li><a href="#armor-cover">Броня и укрытие</a></li>
+            <li><a href="#poryadok-deystviy-v-boyu">Порядок действий в бою</a></li>
+            <li><a href="#zapugivanie">Запугивание</a></li>
+            <li><a href="#dostupnye-boevye-deystviya">Доступные боевые действия</a></li>
+            <li><a href="#dalniy-boy">Дальний бой</a></li>
+            <li><a href="#blizhniy-boy">Ближний Бой</a></li>
+            <li><a href="#bronya-i-ukrytie">Броня и Укрытие</a></li>
           </ul>
         </div>
         <div class="ref-toc-group">
           <h3>Ранения, Спасброски и Критические травмы</h3>
           <ul>
-            <li><a href="#wound-states">Состояния ранений</a></li>
-            <li><a href="#death-saves">Спасброски от смерти</a></li>
-            <li><a href="#stabilize">Стабилизация</a></li>
-            <li><a href="#critical">Критические ранения</a></li>
+            <li><a href="#sostoyaniya-raneniy">Состояния Ранений</a></li>
+            <li><a href="#spasbroski-ot-smerti">Спасброски от смерти</a></li>
+            <li><a href="#stabilizatsiya">Стабилизация</a></li>
+            <li><a href="#kriticheskie-raneniya">Критические ранения</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
     <main class="ref-main">
-      <!-- ==================================================================== -->
-      <!--  Лист 1: Порядок Боя и Действия                                       -->
-      <!-- ==================================================================== -->
-      <article class="ref-sheet" id="sheet-combat">
+      <article class="ref-sheet">
         <h1 class="ref-sheet-title">Порядок Боя и Действия</h1>
-
-        <section class="ref-section" id="combat-order">
-          <h3>Порядок действий в бою</h3>
-          <div class="ref-table-wrap">
-            <table class="ref-table">
-              <thead>
-                <tr><th>Фаза</th><th>Действие</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>1</td><td>Ведущий объявляет броски <strong>Инициативы</strong></td></tr>
-                <tr><td>2</td><td>Все игроки и NPC бросают: <code>REF + 1d10</code></td></tr>
-                <tr><td>3</td><td>Действуют в порядке убывания инициативы</td></tr>
-                <tr><td>4</td><td>В свой ход персонаж делает <strong>1 движение</strong> и <strong>1 действие</strong></td></tr>
-              </tbody>
-            </table>
-          </div>
+        <section class="ref-section" id="poryadok-deystviy-v-boyu">
+<h3>Порядок действий в бою</h3>
+<div class="ref-table-wrap"><table class="ref-table">
+<thead>
+<tr>
+<th>Фаза</th>
+<th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Ведущий объявляет броски <strong>Инициативы</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Все игроки и NPC бросают: <code>REF + 1d10</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Действуют в порядке убывания инициативы</td>
+</tr>
+<tr>
+<td>4</td>
+<td>В свой ход персонаж делает <strong>1 движение</strong> и <strong>1 действие</strong></td>
+</tr>
+</tbody>
+</table></div>
         </section>
-
-        <section class="ref-section" id="intimidate">
-          <h3>Запугивание</h3>
-          <p>Перед самой дракой или чтобы выяснить, кто отступит, двое «тяжеловесов» могут устроить <strong>Запугивание</strong> — дуэль характеров, где важно, кто круче, злее и выглядит более готовым доказать это.</p>
-          <p>Оба участника бросают:</p>
-          <ul>
-            <li>
-              <code>COOL + Reputation + 1d10</code>
-              <ul>
-                <li>Если определяющее событие связано с вашей трусостью, ваш уровень Reputation считается <strong>отрицательным</strong>.</li>
-                <li>При равенстве ничего не происходит.</li>
-                <li>Проигравший выбирает одно из двух:
-                  <ul>
-                    <li><strong>Отступить</strong>;</li>
-                    <li>или получить <strong>-2 ко всем действиям против победителя</strong>, пока не победит его хотя бы один раз.</li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
+        <section class="ref-section" id="zapugivanie">
+<h3>Запугивание</h3>
+<p>Перед самой дракой или чтобы выяснить, кто отступит, двое «тяжеловесов» могут устроить <strong>Запугивание</strong> — дуэль характеров, где важно, кто круче, злее и выглядит более готовым доказать это.</p>
+<p>Оба участника бросают:</p>
+<ul>
+<li><code>COOL + Reputation + 1d10</code><ul>
+<li>Если определяющее событие связано с вашей трусостью, ваш уровень Reputation считается <strong>отрицательным</strong>.</li>
+<li>При равенстве ничего не происходит.</li>
+<li>Проигравший выбирает одно из двух:<ul>
+<li><strong>Отступить</strong>;</li>
+<li>или получить <strong>-2 ко всем действиям против победителя</strong>, пока не победит его хотя бы один раз.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
         </section>
-
-        <section class="ref-section" id="combat-actions">
-          <h3>Доступные боевые действия</h3>
-          <p>Каждый персонаж получает <strong>1 действие + 1 движение</strong> за ход. Ниже — список распространённых боевых действий:</p>
-          <div class="ref-table-wrap">
-            <table class="ref-table">
-              <thead>
-                <tr><th>Действие</th><th>Описание</th></tr>
-              </thead>
-              <tbody>
-                <tr><td><strong>Движение</strong></td><td>Перемещение на расстояние до <code>MOVE × 2</code> метров за ход.</td></tr>
-                <tr><td><strong>Атака</strong></td><td>Совершить атаку в ближнем или дальнем бою.</td></tr>
-                <tr><td><strong>Удушение</strong></td><td>Душить противника, которого вы схватили.</td></tr>
-                <tr><td><strong>Взять/Бросить щит</strong></td><td>Поднять или сбросить щит. Требует действие.</td></tr>
-                <tr><td><strong>Сесть в транспорт</strong></td><td>Сесть в транспортное средство.</td></tr>
-                <tr><td><strong>Встать</strong></td><td>Подняться после состояния лёжа (Prone). Пока вы лежите, нельзя использовать действие движения.</td></tr>
-                <tr><td><strong>Захват</strong></td><td>Схватить противника или отобрать предмет, который он держит.</td></tr>
-                <tr><td><strong>Отложить действие</strong></td><td>Отложить действие до более позднего момента в очереди инициативы.</td></tr>
-                <tr><td><strong>Живой щит</strong></td><td>Использовать захваченного противника как живой щит.</td></tr>
-                <tr><td><strong>Перезарядка</strong></td><td>Полностью перезарядить оружие новым магазином одного типа боеприпасов.</td></tr>
-                <tr><td><strong>Бег</strong></td><td>Совершить дополнительное действие движения, если вы уже перемещались в этом ходу.</td></tr>
-                <tr><td><strong>Завести транспорт</strong></td><td>Завести транспорт, получить его значение MOVE и переместиться в начало очереди инициативы.</td></tr>
-                <tr><td><strong>Стабилизировать</strong></td><td>Стабилизировать цель для начала естественного лечения или вывести её из состояния смертельного ранения.</td></tr>
-                <tr><td><strong>Бросок</strong></td><td>Бросить захваченного противника на землю или метнуть предмет.</td></tr>
-                <tr><td><strong>Действия в Сети</strong></td><td>Выполнить несколько сетевых действий (NET Actions) внутри Сети (NET).</td></tr>
-                <tr><td><strong>Использовать объект</strong></td><td>Взаимодействовать с объектом без проверки навыка.</td></tr>
-                <tr><td><strong>Использовать навык</strong></td><td>Применить один из навыков для быстрого действия.</td></tr>
-                <tr><td><strong>Манёвр транспортом</strong></td><td>Использовать действие, чтобы полностью сосредоточиться на опасном манёвре во время вождения.</td></tr>
-              </tbody>
-            </table>
-          </div>
+        <section class="ref-section" id="dostupnye-boevye-deystviya">
+<h3>Доступные боевые действия</h3>
+<p>Каждый персонаж получает <strong>1 действие + 1 движение</strong> за ход. Ниже — список распространённых боевых действий:</p>
+<div class="ref-table-wrap"><table class="ref-table">
+<thead>
+<tr>
+<th>Действие</th>
+<th>Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Движение</strong></td>
+<td>Перемещение на расстояние до <code>MOVE × 2</code> метров за ход.</td>
+</tr>
+<tr>
+<td><strong>Атака</strong></td>
+<td>Совершить атаку в ближнем или дальнем бою.</td>
+</tr>
+<tr>
+<td><strong>Удушение</strong></td>
+<td>Душить противника, которого вы схватили.</td>
+</tr>
+<tr>
+<td><strong>Взять/Бросить щит</strong></td>
+<td>Поднять или сбросить щит. Требует действие.</td>
+</tr>
+<tr>
+<td><strong>Сесть в транспорт</strong></td>
+<td>Сесть в транспортное средство.</td>
+</tr>
+<tr>
+<td><strong>Встать</strong></td>
+<td>Подняться после состояния лёжа (Prone). Пока вы лежите, нельзя использовать действие движения.</td>
+</tr>
+<tr>
+<td><strong>Захват</strong></td>
+<td>Схватить противника или отобрать предмет, который он держит.</td>
+</tr>
+<tr>
+<td><strong>Отложить действие</strong></td>
+<td>Отложить действие до более позднего момента в очереди инициативы.</td>
+</tr>
+<tr>
+<td><strong>Живой щит</strong></td>
+<td>Использовать захваченного противника как живой щит.</td>
+</tr>
+<tr>
+<td><strong>Перезарядка</strong></td>
+<td>Полностью перезарядить оружие новым магазином одного типа боеприпасов.</td>
+</tr>
+<tr>
+<td><strong>Бег</strong></td>
+<td>Совершить дополнительное действие движения, если вы уже перемещались в этом ходу.</td>
+</tr>
+<tr>
+<td><strong>Завести транспорт</strong></td>
+<td>Завести транспорт, получить его значение MOVE и переместиться в начало очереди инициативы.</td>
+</tr>
+<tr>
+<td><strong>Стабилизировать</strong></td>
+<td>Стабилизировать цель для начала естественного лечения или вывести её из состояния смертельного ранения.</td>
+</tr>
+<tr>
+<td><strong>Бросок</strong></td>
+<td>Бросить захваченного противника на землю или метнуть предмет.</td>
+</tr>
+<tr>
+<td><strong>Действия в Сети</strong></td>
+<td>Выполнить несколько сетевых действий (NET Actions) внутри Сети (NET).</td>
+</tr>
+<tr>
+<td><strong>Использовать объект</strong></td>
+<td>Взаимодействовать с объектом без проверки навыка.</td>
+</tr>
+<tr>
+<td><strong>Использовать навык</strong></td>
+<td>Применить один из навыков для быстрого действия.</td>
+</tr>
+<tr>
+<td><strong>Манёвр транспортом</strong></td>
+<td>Использовать действие, чтобы полностью сосредоточиться на опасном манёвре во время вождения.</td>
+</tr>
+</tbody>
+</table></div>
         </section>
-
-        <section class="ref-section" id="ranged">
-          <h3>Дальний бой</h3>
-          <p>Дальний бой разрешается следующим образом:</p>
-          <ul>
-            <li><code>REF + соответствующий навык оружия + 1d10</code> vs. <code>DV дистанции</code></li>
-            <li>
-              <code>REF + соответствующий навык оружия + 1d10</code> vs. <code>DEX + Evasion + 1d10</code>
-              <ul>
-                <li>Если у защищающегося <strong>REF 8+</strong>, он может попытаться <strong>уклониться</strong>.</li>
-              </ul>
-            </li>
-            <li>
-              Прицельный выстрел даёт <strong>-8 к проверке атаки</strong>, имеет ROF 1 и <strong>не игнорирует броню</strong>. Выберите цель:
-              <ul>
-                <li><strong>Голова:</strong> урон, прошедший через броню SP, умножается на <strong>×2</strong>.</li>
-                <li><strong>Удерживаемый предмет:</strong> если урон пробил броню, цель роняет предмет.</li>
-                <li><strong>Нога:</strong> если урон пробил броню, цель получает критическое ранение <strong>Сломанная нога</strong>.</li>
-              </ul>
-            </li>
-            <li>Оружие с ROF 2 позволяет стрелять <strong>дважды за одно действие</strong>.</li>
-          </ul>
-
-          <p><strong>Таблица DV по дистанции:</strong></p>
-          <div class="ref-table-wrap">
-            <table class="ref-table ref-center">
-              <thead>
-                <tr>
-                  <th>Тип оружия</th><th>0–6 м</th><th>7–12 м</th><th>13–25 м</th><th>26–50 м</th>
-                  <th>51–100 м</th><th>101–200 м</th><th>201–400 м</th><th>401–800 м</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td><strong>Пистолет</strong></td><td>13</td><td>15</td><td>20</td><td>25</td><td>30</td><td>30</td><td>-</td><td>-</td></tr>
-                <tr><td><strong>ПП</strong></td><td>15</td><td>13</td><td>15</td><td>20</td><td>25</td><td>25</td><td>30</td><td>-</td></tr>
-                <tr><td><strong>Дробовик (пуля)</strong></td><td>13</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td>-</td><td>-</td></tr>
-                <tr><td><strong>Штурмовая винтовка</strong></td><td>17</td><td>16</td><td>15</td><td>13</td><td>15</td><td>20</td><td>25</td><td>30</td></tr>
-                <tr><td><strong>Снайперская винтовка</strong></td><td>30</td><td>25</td><td>25</td><td>20</td><td>15</td><td>16</td><td>17</td><td>20</td></tr>
-                <tr><td><strong>Луки и арбалеты</strong></td><td>15</td><td>13</td><td>15</td><td>17</td><td>20</td><td>22</td><td>-</td><td>-</td></tr>
-                <tr><td><strong>Гранатомёт</strong></td><td>16</td><td>15</td><td>15</td><td>17</td><td>20</td><td>22</td><td>25</td><td>-</td></tr>
-                <tr><td><strong>Ракетная установка</strong></td><td>17</td><td>16</td><td>15</td><td>15</td><td>20</td><td>20</td><td>25</td><td>30</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="ref-sub">
-            <h4>Автоматическая стрельба</h4>
-            <p>Использование автоматической стрельбы требует одно действие и <strong>10 пуль</strong>. <strong>Если в магазине меньше 10 патронов, автоматическая стрельба невозможна.</strong></p>
-            <ul>
-              <li><code>REF + Autofire + 1d10</code> vs. <code>DV дистанции автоогня</code></li>
-              <li>Используй таблицу DV для автоматической стрельбы.</li>
-              <li>Если попал — <strong>брось 2d6</strong> урона и умножь на <strong>разницу между броском и DV</strong>, максимум до параметра Autofire оружия (<strong>3</strong> для ПП, <strong>4</strong> для штурмовых винтовок).</li>
-              <li>Цели с <strong>REF 8+</strong> всё равно могут попытаться уклониться.</li>
-              <li>Если на обоих кубиках выпало 6 — наносится критическое ранение.</li>
-              <li>Прицельный выстрел невозможен.</li>
-            </ul>
-            <p><strong>Таблица DV для автоматической стрельбы:</strong></p>
-            <div class="ref-table-wrap">
-              <table class="ref-table ref-center">
-                <thead>
-                  <tr><th>Тип</th><th>0-6 м</th><th>7-12 м</th><th>13-25 м</th><th>26-50 м</th><th>51-100 м</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td><strong>ПП (SMG)</strong></td><td>20</td><td>17</td><td>20</td><td>25</td><td>30</td></tr>
-                  <tr><td><strong>Штурм. винт.</strong></td><td>22</td><td>20</td><td>17</td><td>20</td><td>25</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="ref-sub">
-            <h4>Огонь на подавление</h4>
-            <p>Использование огня на подавление требует одно действие и <strong>10 пуль</strong>. <strong>Если в магазине меньше 10 патронов, огонь на подавление невозможен.</strong></p>
-            <p>Все находящиеся <strong>пешком</strong>, в пределах <strong>25 м</strong>, <strong>без укрытия</strong> и <strong>в линии видимости</strong>, должны бросить:</p>
-            <ul>
-              <li>
-                <code>WILL + Concentration + 1d10</code> vs. <code>REF + Autofire + 1d10</code>
-                <ul>
-                  <li>Любой, кто провалит, должен использовать своё следующее Движение, чтобы укрыться. Если одного Движения недостаточно, он обязан также использовать действие <strong>Бег</strong>, чтобы добраться до укрытия или как можно ближе к нему.</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <div class="ref-sub">
-            <h4>Выстрел дробью</h4>
-            <p>Помимо пуль, дробовики могут стрелять <strong>дробовыми зарядами</strong>:</p>
-            <ul>
-              <li>
-                <code>REF + Shoulder Arms + 1d10</code> против <code>DV13</code>
-                <ul>
-                  <li>Все цели перед вами в пределах 6 м, которых вы видите, получают <strong>3d6 урона</strong>, если выстрел успешен. Урон бросается один раз на всех.</li>
-                </ul>
-              </li>
-              <li>Прицельный выстрел невозможен.</li>
-            </ul>
-          </div>
-
-          <div class="ref-sub">
-            <h4>Взрывчатка</h4>
-            <p>Оружие со взрывчаткой наносит урон всем целям (и окружению) в <strong>зоне 10×10 м</strong>, центр которой — выбранная цель. <strong>Урон бросается один раз для всех целей.</strong></p>
-          </div>
+        <section class="ref-section" id="dalniy-boy">
+<h3>Дальний бой</h3>
+<p>Дальний бой разрешается следующим образом:</p>
+<ul>
+<li><code>REF + соответствующий навык оружия + 1d10</code> vs. <code>DV дистанции</code></li>
+<li><code>REF + соответствующий навык оружия + 1d10</code> vs. <code>DEX + Evasion + 1d10</code><ul>
+<li>Если у защищающегося <strong>REF 8+</strong>, он может попытаться <strong>уклониться</strong>.</li>
+</ul>
+</li>
+<li>Оружие с ROF 2 позволяет стрелять <strong>дважды за одно действие</strong>.</li>
+</ul>
+<p><strong>Таблица DV по дистанции:</strong></p>
+<div class="ref-table-wrap"><table class="ref-table ref-center">
+<thead>
+<tr>
+<th>Тип оружия</th>
+<th>0–6 м</th>
+<th>7–12 м</th>
+<th>13–25 м</th>
+<th>26–50 м</th>
+<th>51–100 м</th>
+<th>101–200 м</th>
+<th>201–400 м</th>
+<th>401–800 м</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Пистолет</strong></td>
+<td>13</td>
+<td>15</td>
+<td>20</td>
+<td>25</td>
+<td>30</td>
+<td>30</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>ПП</strong></td>
+<td>15</td>
+<td>13</td>
+<td>15</td>
+<td>20</td>
+<td>25</td>
+<td>25</td>
+<td>30</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Дробовик (пуля)</strong></td>
+<td>13</td>
+<td>15</td>
+<td>20</td>
+<td>25</td>
+<td>30</td>
+<td>35</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Штурмовая винтовка</strong></td>
+<td>17</td>
+<td>16</td>
+<td>15</td>
+<td>13</td>
+<td>15</td>
+<td>20</td>
+<td>25</td>
+<td>30</td>
+</tr>
+<tr>
+<td><strong>Снайперская винтовка</strong></td>
+<td>30</td>
+<td>25</td>
+<td>25</td>
+<td>20</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+<td>20</td>
+</tr>
+<tr>
+<td><strong>Луки и арбалеты</strong></td>
+<td>15</td>
+<td>13</td>
+<td>15</td>
+<td>17</td>
+<td>20</td>
+<td>22</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Гранатомёт</strong></td>
+<td>16</td>
+<td>15</td>
+<td>15</td>
+<td>17</td>
+<td>20</td>
+<td>22</td>
+<td>25</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>Ракетная установка</strong></td>
+<td>17</td>
+<td>16</td>
+<td>15</td>
+<td>15</td>
+<td>20</td>
+<td>20</td>
+<td>25</td>
+<td>30</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Прицельный выстрел</h4>
+<p>Прицельный выстрел даёт <strong>-8 к проверке атаки</strong>, имеет ROF 1 и <strong>не игнорирует броню</strong>. Выберите цель:</p>
+<ul>
+<li><strong>Голова:</strong> урон, прошедший через броню SP, умножается на <strong>×2</strong>.</li>
+<li><strong>Удерживаемый предмет:</strong> если урон пробил броню, цель роняет предмет.</li>
+<li><strong>Нога:</strong> если урон пробил броню, цель получает критическое ранение <strong>Сломанная нога</strong>.</li>
+</ul>
+<h4>Автоматическая стрельба</h4>
+<p>Использование автоматической стрельбы требует одно действие и <strong>10 пуль</strong>. <strong>Если в магазине меньше 10 патронов, автоматическая стрельба невозможна.</strong></p>
+<ul>
+<li><code>REF + Autofire + 1d10</code> vs. <code>DV дистанции автоогня</code></li>
+<li>Используй таблицу DV для автоматической стрельбы.</li>
+<li>Если попал — <strong>брось 2d6</strong> урона и умножь на <strong>разницу между броском и DV</strong>, максимум до параметра Autofire оружия (<strong>3</strong> для ПП, <strong>4</strong> для штурмовых винтовок).</li>
+<li>Цели с <strong>REF 8+</strong> всё равно могут попытаться уклониться.</li>
+<li>Если на обоих кубиках выпало 6 — наносится критическое ранение.</li>
+</ul>
+<p><strong>Таблица DV для автоматической стрельбы:</strong></p>
+<div class="ref-table-wrap"><table class="ref-table ref-center">
+<thead>
+<tr>
+<th>Тип</th>
+<th>0-6 м</th>
+<th>7-12 м</th>
+<th>13-25 м</th>
+<th>26-50 м</th>
+<th>51-100 м</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ПП (SMG)</strong></td>
+<td>20</td>
+<td>17</td>
+<td>20</td>
+<td>25</td>
+<td>30</td>
+</tr>
+<tr>
+<td><strong>Штурм. винт.</strong></td>
+<td>22</td>
+<td>20</td>
+<td>17</td>
+<td>20</td>
+<td>25</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Огонь на подавление</h4>
+<p>Использование огня на подавление требует одно действие и <strong>10 пуль</strong>. <strong>Если в магазине меньше 10 патронов, огонь на подавление невозможен.</strong></p>
+<p>Все находящиеся <strong>пешком</strong>, в пределах <strong>25 м</strong>, <strong>без укрытия</strong> и <strong>в линии видимости</strong>, должны бросить:</p>
+<ul>
+<li><code>WILL + Concentration + 1d10</code> vs. <code>REF + Autofire + 1d10</code><ul>
+<li>Любой, кто провалит, должен использовать своё следующее Движение, чтобы укрыться. Если одного Движения недостаточно, он обязан также использовать действие <strong>Бег</strong>, чтобы добраться до укрытия или как можно ближе к нему.</li>
+</ul>
+</li>
+</ul>
+<h4>Выстрел дробью</h4>
+<p>Помимо пуль, дробовики могут стрелять <strong>дробовыми зарядами</strong>:</p>
+<ul>
+<li><code>REF + Shoulder Arms + 1d10</code> против <code>DV13</code><ul>
+<li>Все цели перед вами в пределах 6 м, которых вы видите, получают <strong>3d6 урона</strong>, если выстрел успешен. Урон бросается один раз на всех.</li>
+</ul>
+</li>
+</ul>
+<h4>Взрывчатка</h4>
+<p>Оружие со взрывчаткой наносит урон всем целям (и окружению) в <strong>зоне 10×10 м</strong>, центр которой — выбранная цель.<br />
+<strong>Урон бросается один раз для всех целей.</strong></p>
         </section>
-
-        <section class="ref-section" id="melee">
-          <h3>Ближний бой</h3>
-          <p>Melee Attack разрешается по формуле:</p>
-          <ul>
-            <li>
-              <code>DEX + соответствующий навык ближнего боя + 1d10</code> vs. <code>DEX + Evasion + 1d10</code>
-              <ul>
-                <li>Цель должна находиться в пределах досягаемости (2 м).</li>
-                <li>В ближнем бою ROF = 2, то есть можно нанести <strong>2 удара за одно действие</strong>.</li>
-                <li>Оружие ближнего боя <strong>игнорирует половину SP брони защитника</strong>.</li>
-                <li>При равенстве побеждает защитник.</li>
-              </ul>
-            </li>
-          </ul>
-
-          <div class="ref-sub">
-            <h4>Рукопашный бой и боевые искусства</h4>
-            <p><strong>Рукопашный бой</strong> использует навык <strong>Brawling</strong> и наносит урон в зависимости от параметра <strong>BODY</strong> атакующего:</p>
-            <ul>
-              <li>
-                <code>DEX + Brawling + 1d10</code> vs. <code>DEX + Evasion + 1d10</code>
-                <ul>
-                  <li>Рукопашная атака <strong>не игнорирует половину</strong> брони защитника.</li>
-                </ul>
-              </li>
-            </ul>
-            <p><strong>Боевые искусства</strong> используют навык <strong>Martial Arts</strong> и также зависят от <strong>BODY</strong>:</p>
-            <ul>
-              <li>
-                <code>DEX + Martial Arts + 1d10</code> vs. <code>DEX + Evasion + 1d10</code>
-                <ul>
-                  <li>Атаки боевых искусств <strong>игнорируют половину SP брони защитника</strong>.</li>
-                </ul>
-              </li>
-            </ul>
-            <div class="ref-table-wrap">
-              <table class="ref-table ref-center">
-                <thead>
-                  <tr><th>BODY ≤ 4</th><th>BODY 5–6 (или кибер-рука)</th><th>BODY 7–10</th><th>BODY ≥ 11</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>1d6</td><td>2d6</td><td>3d6</td><td>4d6</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="ref-sub">
-            <h4>Захват</h4>
-            <p>В качестве действия можно захватить и удерживать кого-то, отнять у него предмет или <strong>вырваться из захвата</strong>:</p>
-            <ul>
-              <li>
-                <code>DEX + Brawling + 1d10</code> vs. <code>DEX + Brawling + 1d10</code>
-                <ul>
-                  <li>Оба участника получают <strong>-2 ко всем действиям</strong>.</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <div class="ref-sub">
-            <h4>Удушение</h4>
-            <p>Если ты атакующий в захвате, можешь душить цель, нанося урон, равный твоему <strong>BODY</strong>, <strong>игнорируя броню</strong>.</p>
-            <ul>
-              <li><strong>Нельзя убить</strong> — цель остаётся с 1 HP и становится <strong>Без сознания</strong>.</li>
-              <li>Если душить ту же цель 3 раунда — она теряет сознание.</li>
-            </ul>
-          </div>
-
-          <div class="ref-sub">
-            <h4>Бросок</h4>
-            <p>Если ты атакующий в захвате, можешь бросить цель на землю, нанося урон, равный твоему <strong>BODY</strong>, <strong>игнорируя броню</strong>.</p>
-            <ul>
-              <li>Можно бросить цель на расстояние до 25 м.</li>
-              <li>Оружие ближнего боя наносит свой урон при броске, но <strong>не делит SP пополам</strong>.</li>
-              <li>Брошенная цель становится <strong>Лежащей (Prone)</strong> и не может использовать действие движения, пока не использует действие <strong>Встать</strong>.</li>
-            </ul>
-          </div>
+        <section class="ref-section" id="blizhniy-boy">
+<h3>Ближний Бой</h3>
+<p>Melee Attack разрешается по формуле:</p>
+<ul>
+<li><code>DEX + соответствующий навык ближнего боя + 1d10</code> vs. <code>DEX + Evasion + 1d10</code><ul>
+<li>Цель должна находиться в пределах досягаемости (2 м).</li>
+<li>В ближнем бою ROF = 2, то есть можно нанести <strong>2 удара за одно действие</strong>.</li>
+<li>Оружие ближнего боя <strong>игнорирует половину SP брони защитника</strong>.</li>
+<li>При равенстве побеждает защитник.</li>
+</ul>
+</li>
+</ul>
+<h4>Рукопашный бой и боевые искусства</h4>
+<p><strong>Рукопашный бой</strong> использует навык <strong>Brawling</strong> и наносит урон в зависимости от параметра <strong>BODY</strong> атакующего:</p>
+<ul>
+<li><code>DEX + Brawling + 1d10</code> vs. <code>DEX + Evasion + 1d10</code><ul>
+<li>Рукопашная атака <strong>не игнорирует половину</strong> брони защитника.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Боевые искусства</strong> используют навык <strong>Martial Arts</strong> и также зависят от <strong>BODY</strong>:</p>
+<ul>
+<li><code>DEX + Martial Arts + 1d10</code> vs. <code>DEX + Evasion + 1d10</code><ul>
+<li>Атаки боевых искусств <strong>игнорируют половину SP брони защитника</strong>.</li>
+</ul>
+</li>
+</ul>
+<div class="ref-table-wrap"><table class="ref-table ref-center">
+<thead>
+<tr>
+<th>BODY ≤ 4</th>
+<th>BODY 5–6 (или кибер-рука)</th>
+<th>BODY 7–10</th>
+<th>BODY ≥ 11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1d6</td>
+<td>2d6</td>
+<td>3d6</td>
+<td>4d6</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Захват</h4>
+<p>В качестве действия можно захватить и удерживать кого-то, отнять у него предмет или <strong>вырваться из захвата</strong>:</p>
+<ul>
+<li><code>DEX + Brawling + 1d10</code> vs. <code>DEX + Brawling + 1d10</code><ul>
+<li>Оба участника получают <strong>-2 ко всем действиям</strong>.</li>
+</ul>
+</li>
+</ul>
+<h4>Удушение</h4>
+<p>Если ты атакующий в захвате, можешь душить цель, нанося урон, равный твоему <strong>BODY</strong>, <strong>игнорируя броню</strong>.</p>
+<ul>
+<li><strong>Нельзя убить</strong> — цель остаётся с 1 HP и становится <strong>Без сознания</strong>.</li>
+<li>Если душить ту же цель 3 раунда — она теряет сознание.</li>
+</ul>
+<h4>Бросок</h4>
+<p>Если ты атакующий в захвате, можешь бросить цель на землю, нанося урон, равный твоему <strong>BODY</strong>, <strong>игнорируя броню</strong>.</p>
+<ul>
+<li>Можно бросить цель на расстояние до 25 м.</li>
+<li>Оружие ближнего боя наносит свой урон при броске, но <strong>не делит SP пополам</strong>.</li>
+<li>Брошенная цель становится <strong>Лежащей (Prone)</strong> и не может использовать действие движения, пока не использует действие <strong>Встать</strong>.</li>
+</ul>
         </section>
-
-        <section class="ref-section" id="armor-cover">
-          <h3>Броня и укрытие</h3>
-          <ul>
-            <li><strong>Броня</strong> снижает урон на значение <strong>SP (Stopping Power)</strong>.</li>
-            <li>SP уменьшается на 1 каждый раз, когда броня останавливает любой урон.</li>
-            <li><strong>Укрытие</strong> поглощает урон, пока не будет разрушено. Излишек урона после разрушения идёт по персонажу за укрытием.</li>
-          </ul>
-          <div class="ref-table-wrap">
-            <table class="ref-table ref-center">
-              <thead>
-                <tr><th>Тип материала</th><th>Толстое укрытие HP</th><th>Тонкое укрытие HP</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Сталь</td><td>50 HP</td><td>25 HP</td></tr>
-                <tr><td>Камень</td><td>40 HP</td><td>20 HP</td></tr>
-                <tr><td>Бронированное стекло</td><td>30 HP</td><td>15 HP</td></tr>
-                <tr><td>Бетон</td><td>25 HP</td><td>10 HP</td></tr>
-                <tr><td>Дерево</td><td>20 HP</td><td>5 HP</td></tr>
-                <tr><td>Гипс/Пенопласт/Пластик</td><td>15 HP</td><td>-</td></tr>
-              </tbody>
-            </table>
-          </div>
+        <section class="ref-section" id="bronya-i-ukrytie">
+<h3>Броня и Укрытие</h3>
+<ul>
+<li><strong>Броня</strong> снижает урон на значение <strong>SP (Stopping Power)</strong>.</li>
+<li>SP уменьшается на 1 каждый раз, когда броня останавливает любой урон.</li>
+<li><strong>Укрытие</strong> поглощает урон, пока не будет разрушено. Излишек урона после разрушения идёт по персонажу за укрытием.</li>
+</ul>
+<div class="ref-table-wrap"><table class="ref-table ref-center">
+<thead>
+<tr>
+<th>Тип материала</th>
+<th>Толстое укрытие HP</th>
+<th>Тонкое укрытие HP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Сталь</td>
+<td>50 HP</td>
+<td>25 HP</td>
+</tr>
+<tr>
+<td>Камень</td>
+<td>40 HP</td>
+<td>20 HP</td>
+</tr>
+<tr>
+<td>Бронированное стекло</td>
+<td>30 HP</td>
+<td>15 HP</td>
+</tr>
+<tr>
+<td>Бетон</td>
+<td>25 HP</td>
+<td>10 HP</td>
+</tr>
+<tr>
+<td>Дерево</td>
+<td>20 HP</td>
+<td>5 HP</td>
+</tr>
+<tr>
+<td>Гипс/Пенопласт/Пластик</td>
+<td>15 HP</td>
+<td>-</td>
+</tr>
+</tbody>
+</table></div>
         </section>
       </article>
-
-      <!-- ==================================================================== -->
-      <!--  Лист 2: Ранения, Спасброски и Критические травмы                     -->
-      <!-- ==================================================================== -->
-      <article class="ref-sheet" id="sheet-injuries">
+      <article class="ref-sheet">
         <h1 class="ref-sheet-title">Ранения, Спасброски и Критические травмы</h1>
-
-        <section class="ref-section" id="wound-states">
-          <h3>Состояния ранений</h3>
-          <p>В <strong>Cyberpunk RED</strong> состояние ранений персонажа влияет на его эффективность и выживаемость.</p>
-          <div class="ref-table-wrap">
-            <table class="ref-table">
-              <thead>
-                <tr><th>Текущее HP</th><th>Состояние ранения</th><th>Эффект</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>HP ≥ половины макс HP</td><td>Здоров / Легко ранен</td><td>Без штрафов</td></tr>
-                <tr><td>HP &lt; половины макс HP</td><td>Серьёзно ранен</td><td>-2 ко всем действиям</td></tr>
-                <tr><td>HP ≤ 0</td><td>Смертельно ранен</td><td>-4 ко всем проверкам, -6 к MOVE (минимум 1). Спасбросок в начале каждого своего хода</td></tr>
-              </tbody>
-            </table>
-          </div>
+        <section class="ref-section" id="sostoyaniya-raneniy">
+<h3>Состояния Ранений</h3>
+<p>В <strong>Cyberpunk RED</strong> состояние ранений персонажа влияет на его эффективность и выживаемость.</p>
+<div class="ref-table-wrap"><table class="ref-table">
+<thead>
+<tr>
+<th>Текущее HP</th>
+<th>Состояние ранения</th>
+<th>Эффект</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HP ≥ половины макс HP</td>
+<td>Здоров / Легко ранен</td>
+<td>Без штрафов</td>
+</tr>
+<tr>
+<td>HP &lt; половины макс HP</td>
+<td>Серьёзно ранен</td>
+<td>-2 ко всем действиям</td>
+</tr>
+<tr>
+<td>HP ≤ 0</td>
+<td>Смертельно ранен</td>
+<td>-4 ко всем проверкам, -6 к MOVE (минимум 1). Спасбросок в начале каждого своего хода</td>
+</tr>
+</tbody>
+</table></div>
         </section>
-
-        <section class="ref-section" id="death-saves">
-          <h3>Спасброски от смерти</h3>
-          <p>Когда персонаж достигает 0 HP или меньше:</p>
-          <ul>
-            <li>Он становится <strong>смертельно раненым</strong>.</li>
-            <li>Он должен делать <strong>спасбросок от смерти</strong> в начале каждого своего хода.</li>
-            <li>Бросьте <strong>1d10</strong>. Если результат <strong>меньше значения BODY</strong>, персонаж выживает и действует как обычно. <strong>Выпавшая 10 — всегда провал</strong>, независимо от BODY.</li>
-            <li>Если бросок <strong>провален</strong> — персонаж умирает.</li>
-            <li>
-              <strong>С каждым раундом</strong>, пока персонаж остаётся без лечения, спасбросок становится <strong>сложнее:</strong>
-              <ul>
-                <li>Добавляйте +1 к результату броска каждый раунд.</li>
-                <li>Например: 2-й раунд = +1 к броску, 3-й = +2 и т. д.</li>
-              </ul>
-            </li>
-            <li>Пока персонаж смертельно ранен, он получает <strong>критическое ранение</strong> при каждом попадании по нему, а его Death Save Penalty растёт ещё на 1.</li>
-          </ul>
-          <div class="ref-example">
-            <p><strong>Пример:</strong><br />
-            Соло с BODY 6 получает -2 HP.<br />
-            Первый раунд: 1d10 → выпало 3 (штраф 0) → 3 &lt; 6 → выжил.<br />
-            Второй раунд: 1d10 → выпало 4, +1 → итого 5 → 5 &lt; 6 → всё ещё жив.<br />
-            Третий раунд: 1d10 → выпало 3, +2 → итого 5 → 5 &lt; 6 → выжил.<br />
-            Четвёртый раунд: 1d10 → выпало 3, +3 → итого 6 → 6 не меньше 6 → МЁРТВ.</p>
-          </div>
+        <section class="ref-section" id="spasbroski-ot-smerti">
+<h3>Спасброски от смерти</h3>
+<p>Когда персонаж достигает 0 HP или меньше:</p>
+<ul>
+<li>Он становится <strong>смертельно раненым</strong>.</li>
+<li>Он должен делать <strong>спасбросок от смерти</strong> в начале каждого своего хода.</li>
+<li>Бросьте <strong>1d10</strong>. Если результат <strong>меньше значения BODY</strong>, персонаж выживает и действует как обычно. <strong>Выпавшая 10 — всегда провал</strong>, независимо от BODY.</li>
+<li>Если бросок <strong>провален</strong> — персонаж умирает.</li>
+<li><strong>С каждым раундом</strong>, пока персонаж остаётся без лечения, спасбросок становится <strong>сложнее:</strong><ul>
+<li>Добавляйте +1 к результату броска каждый раунд.</li>
+<li>Например: 2-й раунд = +1 к броску, 3-й = +2 и т. д.</li>
+</ul>
+</li>
+<li>Пока персонаж смертельно ранен, он получает <strong>критическое ранение</strong> при каждом попадании по нему, а его Death Save Penalty растёт ещё на 1.</li>
+</ul>
+<blockquote>
+<p><strong>Пример:</strong><br />
+Соло с BODY 6 получает -2 HP.<br />
+Первый раунд: 1d10 → выпало 3 (штраф 0) → 3 &lt; 6 → выжил.<br />
+Второй раунд: 1d10 → выпало 4, +1 → итого 5 → 5 &lt; 6 → всё ещё жив.<br />
+Третий раунд: 1d10 → выпало 3, +2 → итого 5 → 5 &lt; 6 → выжил.<br />
+Четвёртый раунд: 1d10 → выпало 3, +3 → итого 6 → 6 не меньше 6 → МЁРТВ.</p>
+</blockquote>
         </section>
-
-        <section class="ref-section" id="stabilize">
-          <h3>Стабилизация</h3>
-          <p>Чтобы начать естественное восстановление, персонажа необходимо <strong>стабилизировать</strong>. Это можно сделать с помощью проверки <strong>First Aid</strong> или <strong>Paramedic</strong>:</p>
-          <p class="ref-formula"><code>TECH + First Aid / Paramedic + 1d10</code> vs. <code>Сложность стабилизации (DV)</code></p>
-          <div class="ref-table-wrap">
-            <table class="ref-table ref-center">
-              <thead>
-                <tr><th>Состояние ранения</th><th>Значение сложности</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Легко ранен</td><td>DV10</td></tr>
-                <tr><td>Серьёзно ранен</td><td>DV13</td></tr>
-                <tr><td>Смертельно ранен</td><td>DV15</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p>Смертельно раненый персонаж после успешной стабилизации возвращается до <strong>1 HP</strong>, а его штраф к спасброску сбрасывается до базового.</p>
-          <p>После успешной стабилизации цель восстанавливает количество HP, равное своему значению <strong>BODY</strong>, за каждый полный день отдыха.</p>
+        <section class="ref-section" id="stabilizatsiya">
+<h3>Стабилизация</h3>
+<p>Чтобы начать естественное восстановление, персонажа необходимо <strong>стабилизировать</strong>. Это можно сделать с помощью проверки <strong>First Aid</strong> или <strong>Paramedic</strong>:</p>
+<p><code>TECH + First Aid / Paramedic + 1d10</code> vs. <code>Сложность стабилизации (DV)</code></p>
+<div class="ref-table-wrap"><table class="ref-table ref-center">
+<thead>
+<tr>
+<th>Состояние ранения</th>
+<th>Значение сложности</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Легко ранен</td>
+<td>DV10</td>
+</tr>
+<tr>
+<td>Серьёзно ранен</td>
+<td>DV13</td>
+</tr>
+<tr>
+<td>Смертельно ранен</td>
+<td>DV15</td>
+</tr>
+</tbody>
+</table></div>
+<p>Смертельно раненый персонаж после успешной стабилизации возвращается до <strong>1 HP</strong>, а его штраф к спасброску сбрасывается до базового.</p>
+<p>После успешной стабилизации цель восстанавливает количество HP, равное своему значению <strong>BODY</strong>, за каждый полный день отдыха.</p>
         </section>
-
-        <section class="ref-section" id="critical">
-          <h3>Критические ранения</h3>
-          <p>Когда при броске урона от <strong>Melee Attack или Ranged Attack</strong> <strong>два или более кубика</strong> показывают <strong>6</strong>, вы наносите <strong>критическое ранение</strong>:</p>
-          <ul>
-            <li>Нанесите <strong>+5 бонусного урона напрямую по HP</strong>. Он не изнашивает броню и наносится, даже если основной урон не пробил SP.</li>
-          </ul>
-          <p>Существует два способа лечения критического ранения: <strong>Быстрое исправление (Quick Fix)</strong> и <strong>Полное лечение (Treatment)</strong>.</p>
-          <ul>
-            <li><strong>Быстрое исправление</strong> убирает эффект ранения до конца дня.</li>
-            <li><strong>Полное лечение</strong> устраняет эффект навсегда.</li>
-          </ul>
-          <p>Бросьте <strong>2d6</strong> на соответствующую <strong>таблицу критических ранений</strong>, пока не получите травму, которой цель ещё не страдает. Если использовался <strong>прицельный выстрел в голову</strong>, используйте таблицу <strong>Критических ранений головы</strong>.</p>
-
-          <div class="ref-sub">
-            <h4>Критические ранения тела</h4>
-            <div class="ref-table-wrap">
-              <table class="ref-table">
-                <thead>
-                  <tr><th>Бросок</th><th>Ранение</th><th>Эффект</th><th>Быстрое исправление</th><th>Лечение</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>2</td><td>Оторванная рука</td><td>Рука потеряна. Вы роняете предметы из этой руки. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>-</td><td>Surgery DV17</td></tr>
-                  <tr><td>3</td><td>Оторванная кисть</td><td>Кисть потеряна. Вы роняете предметы из этой кисти. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>-</td><td>Surgery DV17</td></tr>
-                  <tr><td>4</td><td>Коллапс лёгкого</td><td>-2 к MOVE (минимум 1). <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>Paramedic DV15</td><td>Surgery DV15</td></tr>
-                  <tr><td>5</td><td>Сломанные рёбра</td><td>В конце каждого хода, в котором вы прошли пешком более 4 м, получаете бонусный урон этого ранения напрямую по HP.</td><td>Paramedic DV13</td><td>Paramedic DV15 или Surgery DV13</td></tr>
-                  <tr><td>6</td><td>Сломанная рука</td><td>Этой рукой нельзя пользоваться. Вы роняете предметы из этой руки.</td><td>Paramedic DV13</td><td>Paramedic DV15 или Surgery DV13</td></tr>
-                  <tr><td>7</td><td>Инородный предмет</td><td>В конце каждого хода, в котором вы прошли пешком более 4 м, получаете бонусный урон этого ранения напрямую по HP.</td><td>First Aid или Paramedic DV13</td><td>-</td></tr>
-                  <tr><td>8</td><td>Сломанная нога</td><td>-4 к MOVE (минимум 1)</td><td>Paramedic DV13</td><td>Paramedic или Surgery DV13</td></tr>
-                  <tr><td>9</td><td>Разрыв мышцы</td><td>-2 к Melee Attack</td><td>First Aid или Paramedic DV13</td><td>-</td></tr>
-                  <tr><td>10</td><td>Повреждённый позвоночник</td><td>В следующий ход вы не можете выполнять действие, но можете двигаться. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>Paramedic DV15</td><td>Surgery DV15</td></tr>
-                  <tr><td>11</td><td>Раздавленные пальцы</td><td>-4 ко всем действиям, где используется эта рука</td><td>Paramedic DV13</td><td>Surgery DV15</td></tr>
-                  <tr><td>12</td><td>Оторванная нога</td><td>Нога потеряна. -6 к MOVE (минимум 1). Нельзя уклоняться от атак. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>-</td><td>Surgery DV17</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="ref-sub">
-            <h4>Критические ранения головы</h4>
-            <div class="ref-table-wrap">
-              <table class="ref-table">
-                <thead>
-                  <tr><th>Бросок</th><th>Ранение</th><th>Эффект</th><th>Быстрое исправление</th><th>Лечение</th></tr>
-                </thead>
-                <tbody>
-                  <tr><td>2</td><td>Потерянный глаз</td><td>Глаз потерян. -4 к Ranged Attack и проверкам Perception, связанным со зрением. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>-</td><td>Surgery DV17</td></tr>
-                  <tr><td>3</td><td>Травма мозга</td><td>-2 ко всем действиям. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>-</td><td>Surgery DV17</td></tr>
-                  <tr><td>4</td><td>Повреждённый глаз</td><td>-2 к Ranged Attack и проверкам Perception, связанным со зрением.</td><td>Paramedic DV15</td><td>Surgery DV13</td></tr>
-                  <tr><td>5</td><td>Сотрясение мозга</td><td>-2 ко всем действиям</td><td>First Aid или Paramedic DV13</td><td>-</td></tr>
-                  <tr><td>6</td><td>Сломанная челюсть</td><td>-4 ко всем действиям, где требуется речь</td><td>Paramedic DV13</td><td>Paramedic или Surgery DV13</td></tr>
-                  <tr><td>7</td><td>Инородный предмет</td><td>В конце каждого хода, в котором вы прошли пешком более 4 м, получаете бонусный урон этого ранения напрямую по HP.</td><td>First Aid или Paramedic DV13</td><td>-</td></tr>
-                  <tr><td>8</td><td>Хлыстовая травма</td><td><strong>Базовый штраф к Death Save увеличен на 1.</strong></td><td>Paramedic DV13</td><td>Paramedic или Surgery DV13</td></tr>
-                  <tr><td>9</td><td>Трещина черепа</td><td>Прицельные выстрелы в голову умножают урон, прошедший через SP, на ×3 (вместо ×2). <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>Paramedic DV15</td><td>Paramedic или Surgery DV15</td></tr>
-                  <tr><td>10</td><td>Повреждённое ухо</td><td>Если вы прошли пешком более 4 м за ход, на следующем ходу не можете использовать действие движения. -2 к проверкам Perception, связанным со слухом.</td><td>Paramedic DV13</td><td>Surgery DV13</td></tr>
-                  <tr><td>11</td><td>Раздавленная трахея</td><td>Вы не можете говорить. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>-</td><td>Surgery DV15</td></tr>
-                  <tr><td>12</td><td>Потерянное ухо</td><td>Ухо потеряно. Если вы прошли пешком более 4 м за ход, на следующем ходу не можете использовать действие движения. -4 к Perception (слух). <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td><td>-</td><td>Surgery DV17</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+        <section class="ref-section" id="kriticheskie-raneniya">
+<h3>Критические ранения</h3>
+<p>Когда при броске урона от <strong>Melee Attack или Ranged Attack</strong> <strong>два или более кубика</strong> показывают <strong>6</strong>, вы наносите <strong>критическое ранение</strong>:</p>
+<ul>
+<li>Нанесите <strong>+5 бонусного урона напрямую по HP</strong>. Он не изнашивает броню и наносится, даже если основной урон не пробил SP.</li>
+</ul>
+<p>Существует два способа лечения критического ранения: <strong>Быстрое исправление (Quick Fix)</strong> и <strong>Полное лечение (Treatment)</strong>.</p>
+<ul>
+<li><strong>Быстрое исправление</strong> убирает эффект ранения до конца дня.</li>
+<li><strong>Полное лечение</strong> устраняет эффект навсегда.</li>
+</ul>
+<p>Бросьте <strong>2d6</strong> на соответствующую <strong>таблицу критических ранений</strong>, пока не получите травму, которой цель ещё не страдает.<br />
+Если использовался <strong>прицельный выстрел в голову</strong>, используйте таблицу <strong>Критических ранений головы</strong>.</p>
+<h4>Критические ранения тела</h4>
+<div class="ref-table-wrap"><table class="ref-table">
+<thead>
+<tr>
+<th>Бросок</th>
+<th>Ранение</th>
+<th>Эффект</th>
+<th>Быстрое исправление</th>
+<th>Лечение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Оторванная рука</td>
+<td>Рука потеряна. Вы роняете предметы из этой руки. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>-</td>
+<td>Surgery DV17</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Оторванная кисть</td>
+<td>Кисть потеряна. Вы роняете предметы из этой кисти. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>-</td>
+<td>Surgery DV17</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Коллапс лёгкого</td>
+<td>-2 к MOVE (минимум 1). <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>Paramedic DV15</td>
+<td>Surgery DV15</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Сломанные рёбра</td>
+<td>В конце каждого хода, в котором вы прошли пешком более 4 м, получаете бонусный урон этого ранения напрямую по HP.</td>
+<td>Paramedic DV13</td>
+<td>Paramedic DV15 или Surgery DV13</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Сломанная рука</td>
+<td>Этой рукой нельзя пользоваться. Вы роняете предметы из этой руки.</td>
+<td>Paramedic DV13</td>
+<td>Paramedic DV15 или Surgery DV13</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Инородный предмет</td>
+<td>В конце каждого хода, в котором вы прошли пешком более 4 м, получаете бонусный урон этого ранения напрямую по HP.</td>
+<td>First Aid или Paramedic DV13</td>
+<td>-</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Сломанная нога</td>
+<td>-4 к MOVE (минимум 1)</td>
+<td>Paramedic DV13</td>
+<td>Paramedic или Surgery DV13</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Разрыв мышцы</td>
+<td>-2 к Melee Attack</td>
+<td>First Aid или Paramedic DV13</td>
+<td>-</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Повреждённый позвоночник</td>
+<td>В следующий ход вы не можете выполнять действие, но можете двигаться. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>Paramedic DV15</td>
+<td>Surgery DV15</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Раздавленные пальцы</td>
+<td>-4 ко всем действиям, где используется эта рука</td>
+<td>Paramedic DV13</td>
+<td>Surgery DV15</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Оторванная нога</td>
+<td>Нога потеряна. -6 к MOVE (минимум 1). Нельзя уклоняться от атак. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>-</td>
+<td>Surgery DV17</td>
+</tr>
+</tbody>
+</table></div>
+<h4>Критические ранения головы</h4>
+<div class="ref-table-wrap"><table class="ref-table">
+<thead>
+<tr>
+<th>Бросок</th>
+<th>Ранение</th>
+<th>Эффект</th>
+<th>Быстрое исправление</th>
+<th>Лечение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>Потерянный глаз</td>
+<td>Глаз потерян. -4 к Ranged Attack и проверкам Perception, связанным со зрением. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>-</td>
+<td>Surgery DV17</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Травма мозга</td>
+<td>-2 ко всем действиям. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>-</td>
+<td>Surgery DV17</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Повреждённый глаз</td>
+<td>-2 к Ranged Attack и проверкам Perception, связанным со зрением.</td>
+<td>Paramedic DV15</td>
+<td>Surgery DV13</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Сотрясение мозга</td>
+<td>-2 ко всем действиям</td>
+<td>First Aid или Paramedic DV13</td>
+<td>-</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Сломанная челюсть</td>
+<td>-4 ко всем действиям, где требуется речь</td>
+<td>Paramedic DV13</td>
+<td>Paramedic или Surgery DV13</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Инородный предмет</td>
+<td>В конце каждого хода, в котором вы прошли пешком более 4 м, получаете бонусный урон этого ранения напрямую по HP.</td>
+<td>First Aid или Paramedic DV13</td>
+<td>-</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Хлыстовая травма</td>
+<td><strong>Базовый штраф к Death Save увеличен на 1.</strong></td>
+<td>Paramedic DV13</td>
+<td>Paramedic или Surgery DV13</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Трещина черепа</td>
+<td>Прицельные выстрелы в голову умножают урон, прошедший через SP, на ×3 (вместо ×2). <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>Paramedic DV15</td>
+<td>Paramedic или Surgery DV15</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Повреждённое ухо</td>
+<td>Если вы прошли пешком более 4 м за ход, на следующем ходу не можете использовать действие движения. -2 к проверкам Perception, связанным со слухом.</td>
+<td>Paramedic DV13</td>
+<td>Surgery DV13</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Раздавленная трахея</td>
+<td>Вы не можете говорить. <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>-</td>
+<td>Surgery DV15</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Потерянное ухо</td>
+<td>Ухо потеряно. Если вы прошли пешком более 4 м за ход, на следующем ходу не можете использовать действие движения. -4 к Perception (слух). <strong>Базовый штраф к спасброску от смерти увеличен на 1.</strong></td>
+<td>-</td>
+<td>Surgery DV17</td>
+</tr>
+</tbody>
+</table></div>
         </section>
       </article>
     </main>

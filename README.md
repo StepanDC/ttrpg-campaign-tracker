@@ -48,6 +48,21 @@ window.SD_CONFIG = { apiBase: 'https://api.example.com' };  // без слэша
 создаёт кампании со своей системой; если открыть «чужую» кампанию не на той
 странице — покажется подсказка со ссылкой на нужную.
 
+## Справочные листы
+
+Исходники — Markdown-файлы в `reference_sheets/<system>/` (сейчас `cyberpunk`).
+Общая HTML-страница собирается скриптом (пакет нужен только для сборки, в
+рантайм/Docker не входит):
+
+```bash
+python -m pip install -r requirements-dev.txt
+python scripts/build_reference.py            # по умолчанию cyberpunk
+```
+
+Результат пишется в `static/<system>-reference.html` и отдаётся тем же
+`StaticFiles`. Кнопка «СПРАВКА» внизу sidebar листа персонажа открывает его в
+новой вкладке.
+
 ## Замечания
 
 - Локи и SSE живут в памяти процесса → запускать **одним воркером**.
