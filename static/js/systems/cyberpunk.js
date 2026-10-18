@@ -146,6 +146,12 @@ const SKILL_RU = {
   'Riding': 'Верховая езда',
 };
 
+// Skills every new character starts with at level 2.
+const STARTING_SKILLS = [
+  'Athletics', 'Brawling', 'Concentration', 'Conversation', 'Evasion', 'First Aid',
+  'Human Perception', 'Language', 'Local Expert', 'Perception', 'Persuasion', 'Stealth',
+];
+
 export function defaultSheet() {
   return {
     handle: '',
@@ -162,12 +168,12 @@ export function defaultSheet() {
     valueMost: '',
     background: '',
     stats: {
-      int: 6, ref: 6, dex: 6, tech: 6, cool: 6, will: 6,
-      luck: { current: 6, max: 6 }, move: 6, body: 6, emp: { current: 6, max: 6 },
+      int: 2, ref: 2, dex: 2, tech: 2, cool: 2, will: 2,
+      luck: { current: 2, max: 2 }, move: 2, body: 2, emp: { current: 2, max: 2 },
     },
     hp: { current: 0 },
     humanity: { current: 0 },
-    skills: {}, // name -> { level, spec }
+    skills: Object.fromEntries(STARTING_SKILLS.map((name) => [name, { level: 2, spec: '' }])), // name -> { level, spec }
     weapons: [],
     armor: { headSP: 0, bodySP: 0, shieldSP: 0, headPenalty: 0, bodyPenalty: 0, shieldPenalty: 0 },
     cyberware: [],

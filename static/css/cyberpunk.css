@@ -241,7 +241,7 @@ textarea { resize: vertical; }
 .der-name { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
 .der-val { font-size: 1.25rem; font-weight: 700; }
 .der-box .stat-score { font-size: 1.25rem; }
-.der-box .der-pair input.stat-score { width: 2.4rem; }
+.der-box .der-pair input.stat-score { width: 3rem; }
 .der-hint { font-size: 0.6rem; color: var(--muted); }
 
 /* ---- skills ---- */
